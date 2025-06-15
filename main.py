@@ -17,3 +17,5 @@ st.write("Analizar el comportamiento financiero de los clientes y proponer una\
 
 st.divider()
 st.markdown("Esta aplicación se presenta a modo de resumen. El desarrollo completo del análisis se puede encontrar haciendo click [acá](https://colab.research.google.com/drive/1wo_o871ordBlu_YGJjtdV8qPToMFdtuc?usp=sharing#scrollTo=wEJysXCSHAR0).")
+
+st.write("Test GitHub")
