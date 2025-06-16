@@ -3,6 +3,7 @@ import io
 from utils import cargar_datos
 import pandas as pd
 
+st.set_page_config(layout="wide")
 st.title("Recolección de datos.")
 st.divider()
 

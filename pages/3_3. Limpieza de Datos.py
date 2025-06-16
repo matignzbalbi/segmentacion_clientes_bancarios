@@ -15,15 +15,11 @@ df = cargar_datos()
 st.title("Análisis Exploratorio de Datos.")
 st.divider()
 
-st.header("Datos:")
-st.dataframe(df.head(5))
-
-
-st.divider()
-
 st.header("Nulos y dúplicados.")
 st.write("Dentro de los datos encontramos solo valores nulos en la columna `Income`, con 24, los cuales fueron eliminados. Por otro lado, \
     no se encontraron valores dúplicados.")
+nulos = df.isnull().sum()
+st.dataframe(nulos)
 
 st.divider()
 st.header("Análisis de las variables")
