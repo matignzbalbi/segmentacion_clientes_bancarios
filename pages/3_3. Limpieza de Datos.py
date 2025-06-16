@@ -16,7 +16,7 @@ st.title("Análisis Exploratorio de Datos.")
 st.divider()
 
 st.header("Nulos y dúplicados.")
-st.write("Dentro de los datos encontramos solo valores nulos en la columna `Income`, con 24, los cuales fueron eliminados. Por otro lado, \
+st.write("Dentro de los datos encontramos solo valores nulos en la columna `Income`. Por otro lado, \
     no se encontraron valores dúplicados.")
 codigo = '''def dataframe_info(df):
     info = pd.DataFrame({
@@ -35,6 +35,16 @@ def dataframe_info(df):
     return info
 st.dataframe(dataframe_info(df))
 
+st.write("Optamos por eliminar estos 24 registros nulos.")
+codigo = '''data = data.dropna()'''
+st.code(codigo)
+
+st.write("Revisamos y vemos que no hay duplicados.")
+codigo = '''duplicados = data[data.duplicated()]
+duplicados'''
+st.code(codigo)
+duplicados = df[df.duplicated()]
+st.dataframe(duplicados)
 
 
 st.divider()
