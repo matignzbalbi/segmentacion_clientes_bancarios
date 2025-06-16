@@ -19,6 +19,9 @@ st.header("Datos:")
 st.dataframe(df.head(5))
 
 
+nulos = df.isnull().sum()
+st.dataframe(nulos)
+
 st.divider()
 
 st.header("Nulos y dúplicados.")

@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from utils import cargar_datos
 
+st.set_page_config(layout="wide")
 df = cargar_datos()
 
 st.title("Modelamiento.")

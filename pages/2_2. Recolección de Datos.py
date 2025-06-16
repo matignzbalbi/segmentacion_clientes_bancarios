@@ -2,6 +2,7 @@ import streamlit as st
 import io
 from utils import cargar_datos
 
+st.set_page_config(layout="wide")
 st.title("Recolección de datos.")
 st.divider()
 
