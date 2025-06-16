@@ -89,6 +89,9 @@ fig = px.bar(
 st.plotly_chart(fig, use_container_width=True)
 
 st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales solo tienen unas pocas ocurrencias, por ende decidimos eliminarlas.")
+df = cargar_datos()
+df_filtrado = df[df['Marital_Status'].isin(['YOLO', 'Absurd'])]
+st.dataframe(df_filtrado)
 st.write("Por otra parte, el objetivo de este análisis de agrupar a los clientes, por lo que decidimos reducir la complejidad realizando la siguiente operación:")
 code_ms = '''
 mapeo_marital_status = {
