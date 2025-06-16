@@ -15,9 +15,8 @@ df = cargar_datos()
 st.title("Análisis Exploratorio de Datos.")
 st.divider()
 
-st.header("Nulos y dúplicados.")
-st.write("Dentro de los datos encontramos solo valores nulos en la columna `Income`. Por otro lado, \
-    no se encontraron valores dúplicados.")
+st.header("Nulos y duplicados.")
+st.write("Analizaremos si nuestra base de datos cuenta con valores nulos y/o con valores duplicados.")
 codigo = '''def dataframe_info(df):
     info = pd.DataFrame({
         "Columnas": df.columns,
