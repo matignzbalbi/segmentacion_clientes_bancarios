@@ -49,7 +49,19 @@ st.dataframe(duplicados)
 
 
 st.divider()
-st.header("Análisis de las variables")
+st.header("Análisis de las variables.")
+st.subheader("Cambio de tipo en las variables.")
+st.write("Cambiamos el type de DT_Customer a datatime y revisamos si queda alguna fecha con formato inválido.")
+codigo = '''data['Dt_Customer'] = pd.to_datetime(data['Dt_Customer'], format='%d-%m-%Y', errors='coerce')
+fechas_invalidas = data[data['Dt_Customer'].isna()]
+
+print("Filas con fechas inválidas (NaT):")
+fechas_invalidas'''
+st.code(codigo)
+
+
+
+
 st.write("Dentro de la columna `Marital_Status` encontramos:")
 
 conteo = df["Marital_Status"].value_counts().reset_index()
