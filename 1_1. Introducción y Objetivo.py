@@ -1,7 +1,6 @@
 import streamlit as st
 
-st.set_page_config(layout="wide")
-st.set_page_config(initial_sidebar_state="expanded")
+st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 st.title("Trabajo Final - Laboratorio de Ciencia de Datos.")
 st.header("Grupo 2 – Clientes bancarios.")
@@ -20,12 +19,4 @@ st.divider()
 st.markdown("Esta aplicación se presenta a modo de resumen. El desarrollo completo del análisis se puede encontrar haciendo click [acá](https://colab.research.google.com/drive/1wo_o871ordBlu_YGJjtdV8qPToMFdtuc?usp=sharing#scrollTo=wEJysXCSHAR0).")
 st.divider()
 
-
 st.markdown("Alumnos: **Julian Livolsi, Tomas Martin, Matias Gonzalez Balbi, Tomas Agustin Coll**.")
-
-
-
-
-
-     
-    
