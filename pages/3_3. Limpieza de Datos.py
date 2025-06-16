@@ -33,7 +33,7 @@ def dataframe_info(df):
         "% de nulos": round(df.isnull().mean() * 100, 2)
     })
     return info
-st.dataframe(dataframe_info)
+st.dataframe(dataframe_info(df))
 
 
 
