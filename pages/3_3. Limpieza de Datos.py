@@ -58,7 +58,9 @@ fechas_invalidas = data[data['Dt_Customer'].isna()]
 print("Filas con fechas inválidas (NaT):")
 fechas_invalidas'''
 st.code(codigo)
-
+df['Dt_Customer'] = pd.to_datetime(df['Dt_Customer'], format='%d-%m-%Y', errors='coerce')
+fechas_invalidas = df[df['Dt_Customer'].isna()]
+st.dataframe(fechas_invalidas)
 
 
 
