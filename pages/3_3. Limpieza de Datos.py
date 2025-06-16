@@ -17,7 +17,7 @@ st.divider()
 
 st.header("Nulos y duplicados.")
 st.write("Analizaremos si nuestra base de datos cuenta con valores nulos y/o con valores duplicados.")
-codigo = '''def dataframe_info(df):
+codigo = '''def dataframe_info(data):
     info = pd.DataFrame({
         "Columnas": df.columns,
         "Valores nulos": df.isnull().sum(),
@@ -34,7 +34,8 @@ def dataframe_info(df):
     return info
 st.dataframe(dataframe_info(df))
 
-st.write("Optamos por eliminar estos 24 registros nulos.")
+st.subheader("Nulos.")
+st.write("Vemos que hay 24 valores nulos en la columna´Income´. Optamos por eliminar estos 24 registros nulos.")
 codigo = '''data = data.dropna()'''
 st.code(codigo)
 
