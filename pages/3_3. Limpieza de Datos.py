@@ -35,10 +35,11 @@ def dataframe_info(df):
 st.dataframe(dataframe_info(df))
 
 st.subheader("Nulos.")
-st.write("Vemos que hay 24 valores nulos en la columna´Income´. Optamos por eliminar estos 24 registros nulos.")
+st.write("Vemos que hay 24 valores nulos en la columna `Income`.Optamos por eliminar estos 24 registros nulos.")
 codigo = '''data = data.dropna()'''
 st.code(codigo)
 
+st.subheader("Duplicados.")
 st.write("Revisamos y vemos que no hay duplicados.")
 codigo = '''duplicados = data[data.duplicated()]
 duplicados'''
