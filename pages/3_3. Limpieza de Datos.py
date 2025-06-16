@@ -63,6 +63,17 @@ fechas_invalidas = df[df['Dt_Customer'].isna()]
 st.write("Observamos que no hay fechas inválidas.")
 st.dataframe(fechas_invalidas)
 
+st.subheader("Eliminación de variables.")
+st.write("Analizamos los valores y frecuencias de las columnas categoricas.")
+codigo = '''df = pd.DataFrame(data)
+
+frecuencia = df['Marital_Status'].value_counts()
+
+frecuencia'''
+st.code(codigo)
+frecuencia = df['Marital_Status'].value_counts()
+st.dataframe(frecuencia)
+
 
 
 st.write("Dentro de la columna `Marital_Status` encontramos:")
