@@ -17,7 +17,7 @@ st.markdown('''
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
 
-
+st.divider()
 st.subheader("Cliente X:")
 st.markdown('''
 - Introducir líneas de productos económicos y ampliar la variedad de artículos con descuentos significativos.
