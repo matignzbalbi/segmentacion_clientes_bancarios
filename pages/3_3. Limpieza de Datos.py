@@ -20,6 +20,7 @@ st.dataframe(df.head(5))
 
 
 nulos = df.isnull().sum()
+nulos.columns = ['Campo', 'Suma de nulos']
 st.dataframe(nulos)
 
 st.divider()
