@@ -18,8 +18,24 @@ st.divider()
 st.header("Nulos y dúplicados.")
 st.write("Dentro de los datos encontramos solo valores nulos en la columna `Income`, con 24, los cuales fueron eliminados. Por otro lado, \
     no se encontraron valores dúplicados.")
-nulos = df.isnull().sum()
-st.dataframe(nulos)
+codigo = '''def dataframe_info(df):
+    info = pd.DataFrame({
+        "Columnas": df.columns,
+        "Valores nulos": df.isnull().sum(),
+        "% de nulos": round(df.isnull().mean() * 100, 2)
+    })
+    return info'''
+st.code(codigo) 
+def dataframe_info(df):
+    info = pd.DataFrame({
+        "Columnas": df.columns,
+        "Valores nulos": df.isnull().sum(),
+        "% de nulos": round(df.isnull().mean() * 100, 2)
+    })
+    return info
+st.dataframe(dataframe_info(df))
+
+
 
 st.divider()
 st.header("Análisis de las variables")
