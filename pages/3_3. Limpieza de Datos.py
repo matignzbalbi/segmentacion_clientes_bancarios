@@ -74,9 +74,10 @@ st.code(codigo)
 frecuencia = df['Marital_Status'].value_counts()
 st.dataframe(frecuencia)
 
+st.write("Podemos ver categorias absurdas como YOLO e Absurd, tambien vemos categorias como Alone las cuales tendrian el mismo significado que Single. Vamos a correguirlos, ademas vamos convertir las categorias Widow y Divorced en Single para simplificar los grupos")
 
-
-st.write("Dentro de la columna `Marital_Status` encontramos:")
+st.divider()
+st.write("También podemos ver la variable `Marital_Status` graficada en una gráfico de barras:")
 
 conteo = df["Marital_Status"].value_counts().reset_index()
 conteo.columns = ["Estado Civil", "Cantidad"]
