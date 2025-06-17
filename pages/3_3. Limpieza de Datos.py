@@ -214,13 +214,13 @@ st.code(codigo)
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
 # Histograma para Income
-sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0])
+sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white')
 axes[0].set_title('Distribución de Income',color='white')
 axes[0].set_xlabel('Income',color='white')
 axes[0].set_ylabel('Frecuencia',color='white')
 
 # Histograma para Age
-sns.histplot(df['Age'], bins=30, kde=True, ax=axes[1])
+sns.histplot(df['Age'], bins=30, kde=True, ax=axes[1],edgecolor='white')
 axes[1].set_title('Distribución de Age',color='white')
 axes[1].set_xlabel('Age',color='white')
 axes[1].set_ylabel('Frecuencia',color='white')
