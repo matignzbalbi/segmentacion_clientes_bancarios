@@ -133,7 +133,10 @@ with col1:
 with col2:
     st.subheader("Z_CostContact")
     st.bar_chart(df["Z_CostContact"].value_counts(), y_label="Frecuencia", x_label="Valores")
-    
+
+codigo = '''df = df.drop(columns=['Z_Revenue','Z_CostContact','ID'], axis=1)'''
+st.code(codigo)
+
 df = limpiar_datos(df)
 df = features(df)
 
