@@ -18,8 +18,7 @@ st.markdown('''
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
 
-
-st.subheader("Segmento de Bajos Ingresos:")
+st.markdown("<h3><u>Segmento de Bajos Ingresos</u></h3>:", unsafe_allow_html=True)
 st.markdown('''
 Productos:
 - Compra pequeñas cantidades de productos, con patrones de compra similares en todas las categorías.
@@ -56,7 +55,7 @@ Estrategias:
 - Asegurar que estén informados sobre ofertas a través de campañas de email marketing y newsletters.''')
 
 
-st.subheader("Segmento de Ingresos Medios:")
+st.markdown("<h3><u>Segmento de Ingresos Medios</u></h3>:", unsafe_allow_html=True)
 st.markdown('''
 Productos:
 - Patrones de compra similares a los del segmento de bajos ingresos, pero con un volumen ligeramente superior.
@@ -93,7 +92,7 @@ Estrategias:
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
 
-st.subheader("Segmento de Altos Ingresos Plus:")
+st.markdown("<h3><u>Segmento de Altos Ingresos Plus</u></h3>:", unsafe_allow_html=True)
 st.markdown('''
 Productos:
 - Fuerte preferencia por pescado, frutas y dulces.
@@ -131,8 +130,7 @@ Estrategias:
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
 - Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
 
-st.subheader("<u>Segmento de Altos Ingresos</u>:",)
-st.markdown("<h3><u>Segmento de Altos Ingresos</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento de Altos Ingresos</u></h3>:", unsafe_allow_html=True)
 st.markdown('''
 Productos:
 - Preferencia por vinos y carne.
