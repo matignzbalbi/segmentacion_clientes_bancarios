@@ -58,12 +58,38 @@ Estrategias:
 
 st.subheader("Segmento de Ingresos Medios:")
 st.markdown('''
+Productos:
+- Patrones de compra similares a los del segmento de bajos ingresos, pero con un volumen ligeramente superior.
+- Preferencia notable por vinos y productos de oro.
+
+
+Compras:
+- Comprador activo en la web, con alta frecuencia de visitas.
+- Tiende a ignorar el catálogo y busca directamente ofertas.
+- Responde positivamente a promociones, especialmente si son relevantes.
+
+
+Familia:
+- Perfil variado: casados, solteros o en pareja.
+- Generalmente tienen uno o más hijos.
+
+
+Perfil:
+- Mayoría de graduados y posgraduados.
+- Mayoría entre 45 y 70 años.
+- Representa el estándar promedio en términos de ingresos, gasto y comportamiento de compra.
+- Baja aceptación de campañas promocionales en general.
+
+
+Notas:
+- Este segmento está atento a las ofertas publicadas en la web y suele aprovechar cualquier tipo de promoción, independientemente del producto o marca.
+- La falta de variedad en productos o la orientación de las ofertas hacia categorías específicas (como vinos o marcas particulares) podría limitar sus compras en otras categorías.
+
+
+Estrategias:
 - Mejorar la visibilidad de las ofertas en la web y personalizarlas según los intereses del cliente.
-
 - Incrementar la variedad de productos y marcas disponibles.
-
 - Experimentar con descuentos en nuevas categorías para estimular el consumo.
-
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
 
