@@ -9,17 +9,17 @@ st.header("Segmentación.")
 st.markdown('''
         Debido a las carácteristicas de los clústers generados por KPrototypes proponemos los\
         siguientes perfiles para cada uno de ellos:
-        * `Cluster 1`: **Clientes X**.
-        * `Cluster 2`: **Clientes Y**.
-        * `Cluster 3`: **Clientes Z**.
-        * `Cluster 4`: **Clientes D**.
+        * `Cluster 1`: **Segmento de Bajos Ingresos**.
+        * `Cluster 2`: **Segmento de Ingresos Medios**.
+        * `Cluster 3`: **Segmento de Ingresos Medios Plus**.
+        * `Cluster 4`: **Segmento de Altos Ingresos**.
             ''')
 
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
 
-st.divider()
-st.subheader("Cliente X:")
+
+st.subheader("Segmento de Bajos Ingresos:")
 st.markdown('''
 - Introducir líneas de productos económicos y ampliar la variedad de artículos con descuentos significativos.
 
@@ -29,7 +29,7 @@ st.markdown('''
 ''')
 st.divider()
 
-st.subheader("Cliente Y:")
+st.subheader("Segmento de Ingresos Medios:")
 st.markdown('''
 - Mejorar la visibilidad de las ofertas en la web y personalizarlas según los intereses del cliente.
 
@@ -40,7 +40,7 @@ st.markdown('''
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
 st.divider()
-st.subheader("Cliente Z:")
+st.subheader("Segmento de Altos Ingresos:")
 st.markdown('''
 - Enfocarse en optimizar el catálogo, asegurando que sea claro y accesible.
 
