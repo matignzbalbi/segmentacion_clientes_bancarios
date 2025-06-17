@@ -93,24 +93,78 @@ Estrategias:
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
 
+st.subheader("Segmento de Altos Ingresos Plus:")
+st.markdown('''
+Productos:
+- Fuerte preferencia por pescado, frutas y dulces.
+- Compra en grandes cantidades, a pesar de ser un grupo reducido.
+- Consumo en otras categorías similar al segmento de ingresos medios, pero ligeramente superior.
+
+
+Compras:
+- Comprador activo en la web, aunque con menos visitas frecuentes.
+- Prefiere adquirir productos a través del catálogo en lugar de buscar ofertas.
+- Compra en grandes cantidades, priorizando la conveniencia sobre los descuentos.
+
+
+Familia:
+- Perfil variado: casados, solteros o en pareja.
+- Generalmente tienen cero o un hijo.
+
+
+Perfil:
+- Mayoría de graduados, con pocos posgraduados.
+- Mayoría entre 45 y 55 años.
+- Destaca por su alto volumen de compras por persona.
+- Baja aceptación de campañas promocionales.
+
+
+Notas:
+- Este cliente parece tener claro lo que desea comprar y aprovecha ofertas relacionadas con la cantidad de productos más que con el precio.
+- Es probable que consuma productos de gama media-alta, con una rotación rápida debido a su corta vida útil (como frutas y pescado).
+- La conveniencia y la disponibilidad de productos específicos son clave para este segmento.
+
+
+Estrategias:
+- Enfocarse en optimizar el catálogo, asegurando que sea claro y accesible.
+- Ofrecer beneficios como envíos gratuitos o descuentos en el delivery para incentivar compras en grandes cantidades.
+- Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
+- Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
+
 st.subheader("Segmento de Altos Ingresos:")
 st.markdown('''
-- Enfocarse en optimizar el catálogo, asegurando que sea claro y accesible.
+Productos:
+- Preferencia por vinos y carne.
+- Compra cantidades moderadamente superiores a la media.
 
-- Ofrecer beneficios como envíos gratuitos o descuentos en el delivery para incentivar compras en grandes cantidades.
 
-- Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
+Compras:
+- Comprador activo en la web, aunque con visitas menos frecuentes.
+- Prefiere el catálogo sobre las ofertas y realiza compras planificadas.
+- Adquiere cantidades moderadas de productos, sin depender de promociones.
 
-- Que los productos sean frescos puede ser un factor clave para que sigan consumiendo
-''')
 
-st.subheader("Cliente D:")
-st.markdown('''
+Familia:
+- Perfil variado: solteros, casados o en pareja.
+- Mayoría sin hijos, aunque algunos están casados.
+
+
+Perfil:
+- Mayoría de graduados y posgraduados.
+- Mayoría entre 60 y 70 años.
+- Grupo longevo que compra cantidades ligeramente superiores a lo estandar.
+- Mayor aceptación de campañas promocionales en comparación con otros segmentos, especialmente las más recientes.
+
+
+Notas:
+- Este cliente parece tener preferencias definidas y realiza compras planificadas, mostrando poca atención a las ofertas.
+- El volumen moderado de compras puede estar relacionado con la conveniencia o la disponibilidad de productos específicos que consume con regularidad.
+- La aceptación de campañas recientes sugiere potencial para fidelizar a este grupo.
+
+
+Estrategias:
 - Crear promociones exclusivas y diferenciadas, enfocadas en productos de alta demanda para este segmento.
-
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
-
 - Ofrecer envíos gratuitos o descuentos en el delivery para aumentar la conveniencia.
-
 ''')
 
