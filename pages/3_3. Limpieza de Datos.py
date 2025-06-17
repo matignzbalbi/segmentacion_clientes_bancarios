@@ -15,10 +15,10 @@ df = cargar_datos()
 st.title("Análisis Exploratorio de Datos.")
 st.divider()
 
-st.header("Nulos y dúplicados.")
-st.write("Dentro de los datos encontramos solo valores nulos en la columna `Income`, con 24, los cuales fueron eliminados. Por otro lado, \
-    no se encontraron valores dúplicados.")
-codigo = '''def dataframe_info(df):
+st.header("Nulos y duplicados.")
+st.subheader("Nulos.")
+st.write("Analizaremos si nuestra base de datos cuenta con valores nulos y/o con valores duplicados.")
+codigo = '''def dataframe_info(data):
     info = pd.DataFrame({
         "Columnas": df.columns,
         "Valores nulos": df.isnull().sum(),
@@ -35,11 +35,46 @@ def dataframe_info(df):
     return info
 st.dataframe(dataframe_info(df))
 
+st.write("Vemos que hay 24 valores nulos en la columna `Income`.Optamos por eliminar estos 24 registros nulos.")
+codigo = '''data = data.dropna()'''
+st.code(codigo)
+
+st.subheader("Duplicados.")
+st.write("Revisamos y vemos que no hay duplicados.")
+codigo = '''duplicados = data[data.duplicated()]
+duplicados'''
+st.code(codigo)
+duplicados = df[df.duplicated()]
+st.dataframe(duplicados)
 
 
 st.divider()
-st.header("Análisis de las variables")
-st.write("Dentro de la columna `Marital_Status` encontramos:")
+st.header("Análisis de las variables.")
+st.subheader("Cambio de tipo en las variables.")
+st.write("Cambiamos el type de DT_Customer a datatime y revisamos si queda alguna fecha con formato inválido.")
+codigo = '''data['Dt_Customer'] = pd.to_datetime(data['Dt_Customer'], format='%d-%m-%Y', errors='coerce')
+fechas_invalidas = data[data['Dt_Customer'].isna()]
+
+print("Filas con fechas inválidas (NaT):")
+fechas_invalidas'''
+st.code(codigo)
+df['Dt_Customer'] = pd.to_datetime(df['Dt_Customer'], format='%d-%m-%Y', errors='coerce')
+fechas_invalidas = df[df['Dt_Customer'].isna()]
+st.write("Observamos que no hay fechas inválidas.")
+st.dataframe(fechas_invalidas)
+
+st.subheader("Eliminación de variables.")
+st.write("Analizamos los valores y frecuencias de las columnas categoricas.")
+codigo = '''df = pd.DataFrame(data)
+
+frecuencia = df['Marital_Status'].value_counts()
+
+frecuencia'''
+st.code(codigo)
+frecuencia = df['Marital_Status'].value_counts()
+st.dataframe(frecuencia)
+
+st.write("También podemos ver la variable `Marital_Status` graficada en una gráfico de barras:")
 
 conteo = df["Marital_Status"].value_counts().reset_index()
 conteo.columns = ["Estado Civil", "Cantidad"]
@@ -54,6 +89,9 @@ fig = px.bar(
 st.plotly_chart(fig, use_container_width=True)
 
 st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales solo tienen unas pocas ocurrencias, por ende decidimos eliminarlas.")
+df = cargar_datos()
+df_filtrado = df[df['Marital_Status'].isin(['YOLO', 'Absurd'])]
+st.dataframe(df_filtrado)
 st.write("Por otra parte, el objetivo de este análisis de agrupar a los clientes, por lo que decidimos reducir la complejidad realizando la siguiente operación:")
 code_ms = '''
 mapeo_marital_status = {

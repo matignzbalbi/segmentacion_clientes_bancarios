@@ -47,6 +47,4 @@ def dataframe_info(df):
 
 st.subheader("Resumen del DataFrame")
 st.dataframe(dataframe_info(df))
-
-
 st.divider()
