@@ -1,7 +1,9 @@
 import streamlit as st
 import io
 from utils import cargar_datos
+import pandas as pd
 
+st.set_page_config(layout="wide")
 st.title("Recolección de datos.")
 st.divider()
 
@@ -33,14 +35,18 @@ st.code(codigo_cargabasededatos,language="python")
 df = cargar_datos()
 st.dataframe(df.head(5))
 
-codigo_cargabasededatos = '''data.info()'''
-st.code(codigo_cargabasededatos,language="python")
-df = cargar_datos()
+def dataframe_info(df):
+    info = pd.DataFrame({
+        "Columnas": df.columns,
+        "Tipo de dato": df.dtypes,
+        "Valores no nulos": df.notnull().sum(),
+        "Valores nulos": df.isnull().sum(),
+        "% de nulos": round(df.isnull().mean() * 100, 2)
+    })
+    return info
 
-#Para mostrarlo como si estuvierámos tirando el código.
-buffer = io.StringIO()
-df.info(buf=buffer)
-s = buffer.getvalue()
-st.text(s)
+st.subheader("Resumen del DataFrame")
+st.dataframe(dataframe_info(df))
+
 
 st.divider()

@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(initial_sidebar_state="expanded")
+st.set_page_config(initial_sidebar_state="expanded",layout="wide")
 
 st.title("Trabajo Final - Laboratorio de Ciencia de Datos.")
 st.header("Grupo 2 – Clientes bancarios.")

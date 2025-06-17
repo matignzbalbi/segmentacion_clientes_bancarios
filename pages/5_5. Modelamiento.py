@@ -4,6 +4,7 @@ from utils import cargar_datos
 from utils import escalado
 from sklearn.decomposition import PCA
 
+st.set_page_config(layout="wide")
 df = cargar_datos()
 
 st.title("Modelamiento.")
