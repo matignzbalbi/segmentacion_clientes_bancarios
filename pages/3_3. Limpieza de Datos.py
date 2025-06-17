@@ -190,10 +190,14 @@ lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
 data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1'''
 st.code(codigo)
 
+
+st.write("Observamos la cantidad de Outliers identificados por IQR:")
 codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
 st.code(codigo)
+st.write("Observamos la cantidad de Outliers identificados por Z-score:")
 codigo = '''print("Outliers por Z-score:", data['is_outlier_Z'].sum())'''
 st.code(codigo)
+st.write("Observamos la cantidad de Outliers identificados por LOF:")
 codigo = '''print("Outliers por LOF:", data['is_outlier_LOF'].sum())'''
 st.code(codigo)
 
