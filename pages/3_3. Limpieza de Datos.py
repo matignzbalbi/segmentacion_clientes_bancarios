@@ -217,8 +217,9 @@ data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
 st.write("Observamos la cantidad de Outliers identificados por IQR:")
 codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
 st.code(codigo)
-print = print("Outliers por IQR:", data['is_outlier_IQR'].sum())
-st.code(print)
+outliers_iqr = data['is_outlier_IQR'].sum()
+st.write("Outliers por IQR:", outliers_iqr)
+
 st.write("Observamos la cantidad de Outliers identificados por Z-score:")
 codigo = '''print("Outliers por Z-score:", data['is_outlier_Z'].sum())'''
 st.code(codigo)
