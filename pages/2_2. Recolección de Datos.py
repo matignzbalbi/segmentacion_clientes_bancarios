@@ -11,7 +11,7 @@ st.write("El dataset con el que trabajamos fue entregado por los profesores, por
 st.divider()
 
 st.subheader("Ir a la base de datos.")
-st.write("Se puede ir a la base de datos clickeando en el siguiente link: https://drive.google.com/file/d/1n2jyv8wbybziDzJoKRiM7ybXtALjs216/view?usp=drive_link")
+st.markdown("Se puede ir a la base de datos clickeando en el siguiente [link](https://drive.google.com/file/d/1n2jyv8wbybziDzJoKRiM7ybXtALjs216/view?usp=drive_link)")
 st.divider()
 
 st.subheader("Cargamos la base de datos.")
