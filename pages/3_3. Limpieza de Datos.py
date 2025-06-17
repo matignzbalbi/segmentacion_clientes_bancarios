@@ -92,7 +92,7 @@ fig = px.bar(
 )
 st.plotly_chart(fig, use_container_width=True)
 
-st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales tienen unas pocas ocurrencias y sumado a que no tienen sentido, decidimos eliminarlas.")
+st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales tienen unas pocas ocurrencias y sumado a que no tienen sentido, decidimos reemplazarlas por la moda.")
 st.write("Por otra parte, el objetivo de este análisis de agrupar a los clientes, por lo que decidimos reducir la complejidad realizando la siguiente operación:")
 st.write("Unificando Married y Together, y catalogando a todas las categorias que impliquen estar soltero en Single.")
 code_ms = '''
@@ -103,8 +103,8 @@ mapeo_marital_status = {
     "Divorced": "Single",
     "Widow": "Single",
     "Alone": "Single",
-    "Absurd": np.nan,
-    "YOLO": np.nan
+    "Absurd": moda,
+    "YOLO": moda
         }
         
 df["Marital_Status"] = df["Marital_Status"].map(mapeo_marital_status)
