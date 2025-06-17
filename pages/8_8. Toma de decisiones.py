@@ -22,8 +22,8 @@ st.header("Estrategias propuestas por tipo de cliente.")
 st.subheader("Segmento de Bajos Ingresos:")
 st.markdown('''
 Productos:
--Compra pequeñas cantidades de productos, con patrones de compra similares en todas las categorías.
--Ligera preferencia por productos de oro y pescado.
+- Compra pequeñas cantidades de productos, con patrones de compra similares en todas las categorías.
+- Ligera preferencia por productos de oro y pescado.
 
 
 Compras:
