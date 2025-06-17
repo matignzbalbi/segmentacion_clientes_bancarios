@@ -6,26 +6,29 @@ import numpy as np
 
 @st.cache_data
 def cargar_datos():
-    df = pd.read_csv("Grupo 2 - Clientes Bancarios.csv", sep= "\t")
-    return df
+    data = pd.read_csv("Grupo 2 - Clientes Bancarios.csv", sep= "\t")
+    return data
 
 def limpiar_datos(data):
 
     # Fechas
     
     data['Dt_Customer'] = pd.to_datetime(data['Dt_Customer'], format='%d-%m-%Y', errors='coerce')
-            
+
+    #children
+    data["Children"] = data["Kidhome"] + data["Teenhome"]
+
     # Mapeo Marital_Status
-    
+    moda = data['Marital_Status'].mode()[0]
     mapeo_marital_status = {
         "Married": "Married",
-        "Together": "Married",
+        "Together": "Together",
         "Single": "Single",
         "Divorced": "Single",
         "Widow": "Single",
         "Alone": "Single",
-        "Absurd": np.nan,
-        "YOLO": np.nan
+        "Absurd": moda,
+        "YOLO": moda
     }
     
     data.loc[:,"Marital_Status"] = data["Marital_Status"].map(mapeo_marital_status)
@@ -45,7 +48,7 @@ def limpiar_datos(data):
     
     # Eliminamos columnas no útiles.
     
-    data = data.drop(columns=['Z_Revenue','Z_CostContact','ID'], axis=1)
+    data = data.drop(columns=['Z_Revenue','Z_CostContact','ID'], axis=1, errors = 'ignore')
     
     data = data.dropna()
 
@@ -53,7 +56,7 @@ def limpiar_datos(data):
 
 def features(data):
     #Edad actual
-    data["Age"] = 2025-data["Year_Birth"]
+    data["Age"] = 2021-data["Year_Birth"]
 
     #Gasto total en diversos items
     data["Spent"] = data["MntWines"]+ data["MntFruits"]+ data["MntMeatProducts"]+ data["MntFishProducts"]+ data["MntSweetProducts"]+ data["MntGoldProds"]
@@ -64,14 +67,17 @@ def features(data):
     #Miembros totales de la familia
     data["Family_Size"] = data["Marital_Status"].replace({"Single": 1, "Married":2, "Together":2})+ data["Children"]
 
+    #Paternidad
+    data["Is_Parent"] = np.where(data.Children> 0, 1, 0)
+
     #Campañas totales aceptadas
-    data['TotalAcceptedCmp'] = data['AcceptedCmp1'] + data['AcceptedCmp2'] + data['AcceptedCmp3'] + data['AcceptedCmp4'] + data['AcceptedCmp5']
+    data['TotalAcceptedCmp'] = data['AcceptedCmp1'] + data['AcceptedCmp2'] + data['AcceptedCmp3'] + data['AcceptedCmp4'] + data['AcceptedCmp5'] + data['Response']
 
     #Compras totales
     data['NumTotalPurchases'] = data['NumWebPurchases'] + data['NumCatalogPurchases'] + data['NumStorePurchases'] + data['NumDealsPurchases']
 
     #Años pertenecientes del cliente desde que se agrego a la base de datos
-    data['Customer_Tenure'] = 2025 - data['Dt_Customer'].dt.year
+    data['Customer_Tenure'] = 2021 - data['Dt_Customer'].dt.year
     
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
-    return data 
+    return data
