@@ -217,20 +217,17 @@ data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
 st.write("Observamos la cantidad de Outliers identificados por IQR:")
 codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
 st.code(codigo)
-outliers_iqr = data['is_outlier_IQR'].sum()
-st.write("Outliers por IQR:", outliers_iqr)
+st.write("Outliers por IQR:", data['is_outlier_IQR'].sum())
 
 st.write("Observamos la cantidad de Outliers identificados por Z-score:")
 codigo = '''print("Outliers por Z-score:", data['is_outlier_Z'].sum())'''
 st.code(codigo)
-outliers_zscore = data['is_outlier_Z'].sum()
-st.write("Outliers por Z-score:", outliers_zscore)
+st.write("Outliers por Z-score:", data['is_outlier_Z'].sum())
 
 st.write("Observamos la cantidad de Outliers identificados por LOF:")
 codigo = '''print("Outliers por LOF:", data['is_outlier_LOF'].sum())'''
 st.code(codigo)
-outliers_LOF = data['is_outlier_LOF'].sum()
-st.write("Outliers por LOF:", outliers_LOF)
+st.write("Outliers por LOF:", data['is_outlier_LOF'].sum())
 
 
 st.write("Observamos la cantidad de Outliers identificados por los TRES métodos:")
