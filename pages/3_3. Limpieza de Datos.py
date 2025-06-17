@@ -235,4 +235,21 @@ codigo = '''data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'
 print("Outliers detectados por los 3 métodos:", data['outlier_todos'].sum())'''
 st.code(codigo)
 data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
-st.write("Outliers por LOF:", data['outlier_todos'].sum())
+st.write("Outliers presentes en los tres métodos:", data['outlier_todos'].sum())
+
+st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos.")
+codigo = '''def replace_outliers_with_median(df, column):
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    median = df[column].median()
+
+    df[column] = df[column].apply(lambda x: median if x < lower_bound or x > upper_bound else x)
+    return df
+
+for col in num_cols:
+    data = replace_outliers_with_median(data, col)'''
+st.code(codigo)
+
