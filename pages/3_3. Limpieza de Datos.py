@@ -163,6 +163,35 @@ st.dataframe(df.head(5))
 st.divider()
 
 st.subheader("Tratamiento de Outliers.")
+st.write("Como primer paso, creamos un boxplot para cada una de las variables para tener un paneo general de los outliers. (No fueron graficados en Streamlit por obvias razones pero pueden verse en el código.)")
+codigo = '''# Filtrar solo columnas numéricas
+numeric_df = data.select_dtypes(include=np.number)
+
+# Excluir columnas binarias (con exactamente 2 valores únicos)
+non_binary_columns = [col for col in numeric_df.columns if numeric_df[col].nunique() > 2]
+
+# Número de gráficos
+num_plots = len(non_binary_columns)
+cols = 2
+rows = (num_plots + 1) // cols
+
+# Crear subplots
+fig, axes = plt.subplots(rows, cols, figsize=(12, rows * 4))
+axes = axes.flatten()
+
+# Crear un boxplot para cada variable
+for i, col in enumerate(non_binary_columns):
+    data.boxplot(column=col, ax=axes[i])
+    axes[i].set_title(f'Boxplot de {col}')
+
+# Eliminar ejes vacíos
+for j in range(i + 1, len(axes)):
+    fig.delaxes(axes[j])
+
+plt.tight_layout()
+plt.show()'''
+st.code(codigo)
+
 st.write("Para el tratamiento de los outliers creemos que la mejor opción es utilizar" \
 " los tres métodos vistos en clase: IQR, Z-score, LOF y hacer un comparación entre ellos.")
 
