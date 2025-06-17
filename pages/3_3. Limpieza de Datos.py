@@ -187,12 +187,16 @@ data['is_outlier_Z'] = (z_scores > 3).any(axis=1)
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(data[num_vars])
 lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
-data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
+data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1'''
+st.code(codigo)
 
+codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
+st.code(codigo)
+codigo = '''print("Outliers por Z-score:", data['is_outlier_Z'].sum())'''
+st.code(codigo)
+codigo = '''print("Outliers por LOF:", data['is_outlier_LOF'].sum())'''
+st.code(codigo)
 
-print("Outliers por IQR:", data['is_outlier_IQR'].sum())
-print("Outliers por Z-score:", data['is_outlier_Z'].sum())
-print("Outliers por LOF:", data['is_outlier_LOF'].sum())
-data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
+codigo = '''data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
 print("Outliers detectados por los 3 métodos:", data['outlier_todos'].sum())'''
 st.code(codigo)
