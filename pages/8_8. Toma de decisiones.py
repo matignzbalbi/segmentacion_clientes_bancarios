@@ -131,7 +131,8 @@ Estrategias:
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
 - Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
 
-st.subheader("<u>Segmento de Altos Ingresos</u>:", unsafe_allow_html=True)
+st.subheader("<u>Segmento de Altos Ingresos</u>:",)
+st.markdown("<h3><u>Segmento de Altos Ingresos</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 Productos:
 - Preferencia por vinos y carne.
