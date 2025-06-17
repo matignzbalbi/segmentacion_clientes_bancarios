@@ -214,7 +214,7 @@ st.code(codigo)
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
 # Histograma para Income
-sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white',color='lightblue',alpha=0.5)
+sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white',color='lightblue',alpha=0.7)
 axes[0].set_title('Distribución de Income',color='white')
 axes[0].set_xlabel('Income',color='white')
 axes[0].set_ylabel('Frecuencia',color='white')
