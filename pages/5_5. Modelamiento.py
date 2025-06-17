@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from utils import cargar_datos
+from utils import escalado
+from sklearn.decomposition import PCA
 
 st.set_page_config(layout="wide")
 df = cargar_datos()
@@ -34,6 +36,8 @@ clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos))
 st.code(model_code, language="python")
 
 st.subheader("Número de clusters.")
+st.write("El número de clusters se determino mediante el **Elbow Method**, considerando el objetivo del proyecto.")
+
 
 st.header("Implementación de PCA")
 st.write("""
@@ -43,4 +47,6 @@ Se seleccionaron **10 componentes** mediante el criterio de varianza acumulada:
 - Umbral establecido: 90%  
 - Reducción dimensional: de X features a 10
 """)
+
+
 
