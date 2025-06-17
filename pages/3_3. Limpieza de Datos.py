@@ -214,7 +214,7 @@ st.code(codigo)
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
 # Histograma para Income
-sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white')
+sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white',color='lightblue')
 axes[0].set_title('Distribución de Income',color='white')
 axes[0].set_xlabel('Income',color='white')
 axes[0].set_ylabel('Frecuencia',color='white')
@@ -239,7 +239,7 @@ data = data[data['Age']<90]'''
 st.code(codigo)
 
 
-st.write("Para el tratamiento de los outliers creemos que la mejor opción es utilizar" \
+st.write("Para el tratamiento de los outliers de las demas variables numéricas creemos que la mejor opción es utilizar" \
 " los tres métodos vistos en clase: IQR, Z-score, LOF y hacer un comparación entre ellos.")
 codigo = '''data = df
 num_vars = df.select_dtypes(include=np.number).columns.tolist()
