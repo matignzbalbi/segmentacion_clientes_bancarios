@@ -191,9 +191,33 @@ data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1'''
 st.code(codigo)
 
 
+data = df
+num_vars = df.select_dtypes(include=np.number).columns.tolist()
+
+iqr_flags = pd.DataFrame(index=data.index)
+
+for col in num_vars:
+    Q1 = data[col].quantile(0.25)
+    Q3 = data[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower = Q1 - 1.5 * IQR
+    upper = Q3 + 1.5 * IQR
+    iqr_flags[col] = (data[col] < lower) | (data[col] > upper)
+
+data['is_outlier_IQR'] = iqr_flags.any(axis=1)
+
+z_scores = np.abs(stats.zscore(data[num_vars]))
+data['is_outlier_Z'] = (z_scores > 3).any(axis=1)
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(data[num_vars])
+lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
+data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
+
 st.write("Observamos la cantidad de Outliers identificados por IQR:")
 codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
 st.code(codigo)
+print("Outliers por IQR:", data['is_outlier_IQR'].sum())
 st.write("Observamos la cantidad de Outliers identificados por Z-score:")
 codigo = '''print("Outliers por Z-score:", data['is_outlier_Z'].sum())'''
 st.code(codigo)
@@ -201,6 +225,7 @@ st.write("Observamos la cantidad de Outliers identificados por LOF:")
 codigo = '''print("Outliers por LOF:", data['is_outlier_LOF'].sum())'''
 st.code(codigo)
 
+st.write("Observamos la cantidad de Outliers identificados por los TRES métodos:")
 codigo = '''data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
 print("Outliers detectados por los 3 métodos:", data['outlier_todos'].sum())'''
 st.code(codigo)
