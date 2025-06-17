@@ -192,9 +192,37 @@ plt.tight_layout()
 plt.show()'''
 st.code(codigo)
 
+st.write("Luego creamos dos histogramas con las variables que nosotros creemos podríamos identificar los outliers a simple vista: `Income` y `Age`")
+codigo = '''fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+# Histograma para Income
+sns.histplot(data['Income'], bins=30, kde=True, ax=axes[0])
+axes[0].set_title('Distribución de Income')
+axes[0].set_xlabel('Income')
+axes[0].set_ylabel('Frecuencia')
+
+# Histograma para Age
+sns.histplot(data['Age'], bins=30, kde=True, ax=axes[1])
+axes[1].set_title('Distribución de Age')
+axes[1].set_xlabel('Age')
+axes[1].set_ylabel('Frecuencia')
+
+plt.tight_layout()
+plt.show()'''
+st.code(codigo)
+
+
+st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
+codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
+data = data[data['Income']<120000]
+
+#Nos quedamos con los clientes que tengan < 90
+data = data[data['Age']<90]'''
+st.code(codigo)
+
+
 st.write("Para el tratamiento de los outliers creemos que la mejor opción es utilizar" \
 " los tres métodos vistos en clase: IQR, Z-score, LOF y hacer un comparación entre ellos.")
-
 codigo = '''data = df
 num_vars = df.select_dtypes(include=np.number).columns.tolist()
 
