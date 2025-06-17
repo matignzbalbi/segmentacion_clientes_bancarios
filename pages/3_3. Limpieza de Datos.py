@@ -211,6 +211,32 @@ plt.tight_layout()
 plt.show()'''
 st.code(codigo)
 
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+# Histograma para Income
+sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white',color='lightblue',alpha=0.7)
+axes[0].set_title('Distribución de Income',color='white')
+axes[0].set_xlabel('Income',color='white')
+axes[0].set_ylabel('Frecuencia',color='white')
+
+# Histograma para Age
+sns.histplot(df['Age'], bins=30, kde=True, ax=axes[1],edgecolor='white')
+axes[1].set_title('Distribución de Age',color='white')
+axes[1].set_xlabel('Age',color='white')
+axes[1].set_ylabel('Frecuencia',color='white')
+
+plt.tight_layout()
+
+# Mostrar en Streamlit
+st.plotly_chart(fig, use_container_width=True)
+
+st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
+codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
+data = data[data['Income']<120000]
+
+#Nos quedamos con los clientes que tengan < 90
+data = data[data['Age']<90]'''
+st.code(codigo)
 
 
 st.write("Para el tratamiento de los outliers de las demas variables numéricas creemos que la mejor opción es utilizar" \
@@ -286,7 +312,7 @@ st.code(codigo)
 data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
 st.write("Outliers presentes en los tres métodos:", data['outlier_todos'].sum())
 
-st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos, ya que representan alrededor del 3 por ciento de nuestros datos.")
+st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos.")
 codigo = '''def replace_outliers_with_median(df, column):
     Q1 = df[column].quantile(0.25)
     Q3 = df[column].quantile(0.75)
