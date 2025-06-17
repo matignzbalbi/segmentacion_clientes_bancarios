@@ -5,7 +5,7 @@ st.title("Toma de decisiones.")
 st.divider()
 
 st.header("Segmentación.")
-
+st.divider()
 st.markdown('''
         Debido a las carácteristicas de los clústers generados por KPrototypes proponemos los\
         siguientes perfiles para cada uno de ellos:
@@ -17,7 +17,7 @@ st.markdown('''
 
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
-
+st.divider()
 st.markdown("<h3><u>Segmento de Bajos Ingresos:</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 Productos:
@@ -54,7 +54,7 @@ Estrategias:
 - Personalizar promociones basadas en el comportamiento de compra de este grupo.
 - Asegurar que estén informados sobre ofertas a través de campañas de email marketing y newsletters.''')
 
-
+st.divider()
 st.markdown("<h3><u>Segmento de Ingresos Medios:</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 Productos:
@@ -91,7 +91,7 @@ Estrategias:
 - Experimentar con descuentos en nuevas categorías para estimular el consumo.
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
-
+st.divider()
 st.markdown("<h3><u>Segmento de Altos Ingresos Plus:</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 Productos:
@@ -129,7 +129,7 @@ Estrategias:
 - Ofrecer beneficios como envíos gratuitos o descuentos en el delivery para incentivar compras en grandes cantidades.
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
 - Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
-
+st.divider()
 st.markdown("<h3><u>Segmento de Altos Ingresos:</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 Productos:
@@ -166,4 +166,4 @@ Estrategias:
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
 - Ofrecer envíos gratuitos o descuentos en el delivery para aumentar la conveniencia.
 ''')
-
+st.divider()
