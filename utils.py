@@ -53,7 +53,7 @@ def limpiar_datos(data):
 
 def features(data):
     #Edad actual
-    data["Age"] = 2021-data["Year_Birth"]
+    data["Age"] = 2025-data["Year_Birth"]
 
     #Gasto total en diversos items
     data["Spent"] = data["MntWines"]+ data["MntFruits"]+ data["MntMeatProducts"]+ data["MntFishProducts"]+ data["MntSweetProducts"]+ data["MntGoldProds"]
@@ -71,7 +71,7 @@ def features(data):
     data['NumTotalPurchases'] = data['NumWebPurchases'] + data['NumCatalogPurchases'] + data['NumStorePurchases'] + data['NumDealsPurchases']
 
     #Años pertenecientes del cliente desde que se agrego a la base de datos
-    data['Customer_Tenure'] = 2021 - data['Dt_Customer'].dt.year
+    data['Customer_Tenure'] = 2025 - data['Dt_Customer'].dt.year
     
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
     return data 

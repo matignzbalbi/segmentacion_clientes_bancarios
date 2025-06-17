@@ -211,32 +211,6 @@ plt.tight_layout()
 plt.show()'''
 st.code(codigo)
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-# Histograma para Income
-sns.histplot(df['Income'], bins=30, kde=True, ax=axes[0],edgecolor='white',color='lightblue',alpha=0.7)
-axes[0].set_title('Distribución de Income',color='white')
-axes[0].set_xlabel('Income',color='white')
-axes[0].set_ylabel('Frecuencia',color='white')
-
-# Histograma para Age
-sns.histplot(df['Age'], bins=30, kde=True, ax=axes[1],edgecolor='white')
-axes[1].set_title('Distribución de Age',color='white')
-axes[1].set_xlabel('Age',color='white')
-axes[1].set_ylabel('Frecuencia',color='white')
-
-plt.tight_layout()
-
-# Mostrar en Streamlit
-st.plotly_chart(fig, use_container_width=True)
-
-st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
-codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
-data = data[data['Income']<120000]
-
-#Nos quedamos con los clientes que tengan < 90
-data = data[data['Age']<90]'''
-st.code(codigo)
 
 
 st.write("Para el tratamiento de los outliers de las demas variables numéricas creemos que la mejor opción es utilizar" \
