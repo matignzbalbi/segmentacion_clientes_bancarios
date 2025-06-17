@@ -63,7 +63,7 @@ fechas_invalidas = df[df['Dt_Customer'].isna()]
 st.write("Observamos que no hay fechas inválidas.")
 st.dataframe(fechas_invalidas)
 
-st.subheader("Eliminación de variables.")
+st.subheader("Eliminación y transformación de variables.")
 st.write("Analizamos los valores y frecuencias de las columnas categoricas.")
 codigo = '''df = pd.DataFrame(data)
 
@@ -124,6 +124,9 @@ st.code(code_ed, language="python")
 st.write("Las columnas `Z_Revenue` y `Z_CostContact` poseen un único valor cada una\
     , por lo que no aportan información útil y decidimos eliminarlas del dataset.")
 
+codigo = '''df = df.drop(columns=['Z_Revenue','Z_CostContact','ID'], axis=1)'''
+st.code(codigo)
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -134,19 +137,22 @@ with col2:
     st.subheader("Z_CostContact")
     st.bar_chart(df["Z_CostContact"].value_counts(), y_label="Frecuencia", x_label="Valores")
 
-codigo = '''df = df.drop(columns=['Z_Revenue','Z_CostContact','ID'], axis=1)'''
-st.code(codigo)
 
+st.divider()
+
+st.subheader("Creación de nuevas variables.")
 df = limpiar_datos(df)
 df = features(df)
 
-st.divider()
-st.header("Features")
 st.markdown('''
             Una vez fueron limpiados, implementamos nuevas features como:
+            * `Age`: Representa la edad actual del cliente.
             * `Spent`: Representa el total gastado en productos.
-            * `N_Children`: Representa el número de hijos.
+            * `Children`: Representa el número de hijos.
+            * `Family_Size`: Representa el tamaño total de la familia.
+            * `TotalAcceptedCmp`: Representa el número total de campañas aceptadas.
             * `NumTotalPurchases`: Representa el número total de compras realizadas.
+            * `Customer_Tenure`: Representa el tiempo desde la último compra del cliente.
             ''')
 
 st.dataframe(df)
