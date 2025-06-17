@@ -27,33 +27,33 @@ Productos:
 
 
 Compras:
--Adquiere productos con poca frecuencia, mostrando una baja respuesta a ofertas.
--Visita frecuentemente la página web, pero no suele concretar compras.
--Tiende a ignorar el catálogo y se enfoca en productos económicos.
+- Adquiere productos con poca frecuencia, mostrando una baja respuesta a ofertas.
+- Visita frecuentemente la página web, pero no suele concretar compras.
+- Tiende a ignorar el catálogo y se enfoca en productos económicos.
 
 
 Familia:
--Perfil variado: casados, solteros o en pareja.
--Generalmente tienen uno o más hijos.
+- Perfil variado: casados, solteros o en pareja.
+- Generalmente tienen uno o más hijos.
 
 
 Perfil:
--Incluye graduados, posgraduados y, de manera única, personas sin estudios superiores.
--Mayoría entre 40 y 50 años.
--Es el grupo con menores ingresos y menor gasto promedio, lo que se refleja en un volumen de compra reducido.
--Frecuentemente presenta quejas.
--Baja aceptación de campañas promocionales, especialmente las iniciales.
+- Incluye graduados, posgraduados y, de manera única, personas sin estudios superiores.
+- Mayoría entre 40 y 50 años.
+- Es el grupo con menores ingresos y menor gasto promedio, lo que se refleja en un volumen de compra reducido.
+- Frecuentemente presenta quejas.
+- Baja aceptación de campañas promocionales, especialmente las iniciales.
 
 
 Notas:
--Debido a sus limitaciones económicas, este segmento prioriza las ofertas con altos porcentajes de descuento, mostrando poco interés en promociones tipo 2x1 debido al bajo volumen de productos comprados.
--Evalúa cuidadosamente el precio de sus compras, lo que podría explicar la baja conversión en la web si no encuentran productos económicos o descuentos atractivos.
+- Debido a sus limitaciones económicas, este segmento prioriza las ofertas con altos porcentajes de descuento, mostrando poco interés en promociones tipo 2x1 debido al bajo volumen de productos comprados.
+- Evalúa cuidadosamente el precio de sus compras, lo que podría explicar la baja conversión en la web si no encuentran productos económicos o descuentos atractivos.
 
 
 Estrategias:
--Introducir líneas de productos económicos y ampliar la variedad de artículos con descuentos significativos.
--Personalizar promociones basadas en el comportamiento de compra de este grupo.
--Asegurar que estén informados sobre ofertas a través de campañas de email marketing y newsletters.''')
+- Introducir líneas de productos económicos y ampliar la variedad de artículos con descuentos significativos.
+- Personalizar promociones basadas en el comportamiento de compra de este grupo.
+- Asegurar que estén informados sobre ofertas a través de campañas de email marketing y newsletters.''')
 
 
 st.subheader("Segmento de Ingresos Medios:")
