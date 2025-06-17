@@ -90,7 +90,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales tienen unas pocas ocurrencias y sumado a que no tienen sentido, decidimos eliminarlas.")
 st.write("Por otra parte, el objetivo de este análisis de agrupar a los clientes, por lo que decidimos reducir la complejidad realizando la siguiente operación:")
-st.write("Unificando Married y Together, y catalogando a todas las categorias que impliquen estar soltero en Single")
+st.write("Unificando Married y Together, y catalogando a todas las categorias que impliquen estar soltero en Single.")
 code_ms = '''
 mapeo_marital_status = {
     "Married": "Married",
@@ -107,7 +107,7 @@ df["Marital_Status"] = df["Marital_Status"].map(mapeo_marital_status)
             '''
 st.code(code_ms, language="python")
 
-st.write("De la misma forma, reducimos la complejidad para la variable **Education**, unificando PhD, Master y 2n Cycle en **PostGraduate**.")
+st.write("De la misma forma, reducimos la complejidad para la variable **Education**, unificando PhD, Master y 2n Cycle como **PostGraduate**.")
 code_ed = '''
 mapeo_education = {
     'PhD': 'Postgraduate',
@@ -121,8 +121,8 @@ df['Education'] = df['Education'].map(mapeo_education)
 '''
 st.code(code_ed, language="python")
 
-st.write("Las columnas `Z_Revenue` y `Z_CostContact` tienen un solo valor cada una\
-    , por lo que no aportan información útil y las eliminaremos de los datos.")
+st.write("Las columnas `Z_Revenue` y `Z_CostContact` poseen un único valor cada una\
+    , por lo que no aportan información útil y decidimos eliminarlas del dataset.")
 
 col1, col2 = st.columns(2)
 
