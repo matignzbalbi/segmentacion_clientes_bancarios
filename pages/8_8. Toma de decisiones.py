@@ -92,7 +92,7 @@ Estrategias:
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
 st.divider()
-st.markdown("<h3><u>Segmento de Altos Ingresos Plus:</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento de Ingresos Medios Plus:</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 Productos:
 - Fuerte preferencia por pescado, frutas y dulces.
