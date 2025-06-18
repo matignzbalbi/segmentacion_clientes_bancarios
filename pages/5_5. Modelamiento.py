@@ -10,7 +10,7 @@ st.title("Modelamiento.")
 st.divider()
 
 st.header("Explicación de los modelos utilizados.")
-st.write("Decidimos utilizar tres modelos para probar cual de los tres nos daba un mejor resultado: K-Prototypes, K-means, AgglomerativeClustering.")
+st.write("Decidimos utilizar tres modelos para probar cual de los tres nos daba un mejor resultado: `K-Prototypes`, `K-means`, `AgglomerativeClustering`.")
 st.divider()
 
 st.subheader("K-Prototypes.")
