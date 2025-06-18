@@ -11,7 +11,7 @@ st.divider()
 
 st.header("Explicación de los modelos utilizados.")
 st.write("Decidimos utilizar tres modelos para probar cual de los tres nos daba un mejor resultado: `K-Prototypes`, `K-means`, `AgglomerativeClustering`.")
-st.write("Todos los modelos fueron probando SIN y CON PCA para evalaur ambos resultados. " \
+st.write("Todos los modelos fueron probando SIN y CON `PCA` para evalaur ambos resultados. " \
 "Se propuso utilizar PCA para reducir la dimensionalidad de las variables numéricas tras escalarlas con RobustScaler, que es más robusto a outliers, minimizando el impacto de anomalías y mejorando la calidad de los clusters. PCA capturará el 90% por ciento de la varianza, lo que reducirá el ruido, mejorará la eficiencia computacional y facilitará la identificación de patrones en los datos sin perder información relevante.")
 
 st.subheader("K-Prototypes.")
