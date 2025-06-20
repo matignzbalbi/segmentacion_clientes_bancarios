@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from utils import cargar_datos
-from utils import escalado
 from sklearn.decomposition import PCA
 
 st.set_page_config(layout="wide")
@@ -10,44 +9,22 @@ df = cargar_datos()
 st.title("Modelamiento.")
 st.divider()
 
-st.header("Escalado de los datos.")
-st.write("""Antes de implementar el modelo escalamos los datos con RobustScaler debido a la alta presencia de outliers en el dataset.\
-    
-    Este escalado lo realizamos excluyendo las variables **binarias.**""")
+st.header("Explicación de los modelos utilizados.")
+st.write("Decidimos utilizar tres modelos para probar cual de los tres nos daba un mejor resultado: `K-Prototypes`, `K-means`, `AgglomerativeClustering`.")
+st.write("Todos los modelos fueron probando SIN y CON `PCA` para evalaur ambos resultados. " \
+"Se propuso utilizar PCA para reducir la dimensionalidad de las variables numéricas tras escalarlas con RobustScaler, que es más robusto a outliers, minimizando el impacto de anomalías y mejorando la calidad de los clusters. PCA capturará el 90% por ciento de la varianza, lo que reducirá el ruido, mejorará la eficiencia computacional y facilitará la identificación de patrones en los datos sin perder información relevante.")
 
-escalado_code = """
-ct = ColumnTransformer([
-    ("num", RobustScaler(), numericas),
-    ("cat", "passthrough", categoricas),
-    ("bin", "passthrough", binarias)
-])
-"""
-st.code(escalado_code, language="python")
+st.subheader("K-Prototypes.")
+st.write("Lo utilizamos porque tenemos datos mixtos (numéricos y categóricos), combinando K-means (para números) y K-modes (para categorías).")
+
+
+st.subheader("K-Means.")
+st.write("Lo utilizamos teniendo en cuenta solo las variables númericas de nuestro dataset y transformando las variables categóricas en numéricas.")
+
+
+st.subheader("AgglomerativeClustering.")
+st.write("Lo utilizamos porque es un algoritmo de clustering jerárquico que empieza agrupando cada punto como su propio grupo, y los va uniendo progresivamente según su cercanía, hasta formar los clusters finales. Es útil para detectar estructuras de grupo complejas, incluso con formas irregulares.")
 st.divider()
-
-st.header("K-Prototypes como modelo seleccionado.")
-st.write("Debido a la naturaleza de los datos, con columnas numéricas, categóricas y binarias, utilizamos `K-Prototypes` como modelo para\
-    conseguir los diferentes clústers.")
-
-model_code = '''
-kprototype = KPrototypes(n_jobs=-1, n_clusters=4, init='Huang', random_state=0)
-clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos))
-'''
-st.code(model_code, language="python")
-
-st.subheader("Número de clusters.")
-st.write("El número de clusters se determino mediante el **Elbow Method**, considerando el objetivo del proyecto.")
-
-
-st.header("Implementación de PCA")
-st.write("""
-Decidimos implementar PCA para evaluar los resultados y compararlos contra el modelo sin este tratamiento.         
-Se seleccionaron **10 componentes** mediante el criterio de varianza acumulada:
-- Varianza explicada acumulada: 90.2%  
-- Umbral establecido: 90%  
-- Reducción dimensional: de X features a 10
-""")
-
 
 
 

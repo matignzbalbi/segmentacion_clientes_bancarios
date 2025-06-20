@@ -92,7 +92,7 @@ fig = px.bar(
 )
 st.plotly_chart(fig, use_container_width=True)
 
-st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales tienen unas pocas ocurrencias y sumado a que no tienen sentido, decidimos eliminarlas.")
+st.write("Dentro de esta columna encontramos las categorías `YOLO` y `Absurd`, las cuales tienen unas pocas ocurrencias y sumado a que no tienen sentido, decidimos reemplazarlas por la moda.")
 st.write("Por otra parte, el objetivo de este análisis de agrupar a los clientes, por lo que decidimos reducir la complejidad realizando la siguiente operación:")
 st.write("Unificando Married y Together, y catalogando a todas las categorias que impliquen estar soltero en Single.")
 code_ms = '''
@@ -103,8 +103,8 @@ mapeo_marital_status = {
     "Divorced": "Single",
     "Widow": "Single",
     "Alone": "Single",
-    "Absurd": np.nan,
-    "YOLO": np.nan
+    "Absurd": moda,
+    "YOLO": moda
         }
         
 df["Marital_Status"] = df["Marital_Status"].map(mapeo_marital_status)
@@ -312,7 +312,7 @@ st.code(codigo)
 data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
 st.write("Outliers presentes en los tres métodos:", data['outlier_todos'].sum())
 
-st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos, ya que representan alrededor del 3 por ciento de nuestros datos.")
+st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos.")
 codigo = '''def replace_outliers_with_median(df, column):
     Q1 = df[column].quantile(0.25)
     Q3 = df[column].quantile(0.75)
