@@ -1,7 +1,8 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
-
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import RobustScaler
 
 
 @st.cache_data
@@ -78,9 +79,15 @@ def features(data):
 
     #Años pertenecientes del cliente desde que se agrego a la base de datos
     data['Customer_Tenure'] = 2025 - data['Dt_Customer'].dt.year
+
+    #Nos quedamos con los clientes que tengan un salario < 120000
+    data = data[data['Income']<120000]
+
+    #Nos quedamos con los clientes que tengan < 90
+    data = data[data['Age']<90]
     
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
-<<<<<<< HEAD
+
     return data
 
 
@@ -109,6 +116,3 @@ def escalado(df):
         
     catColumnsPos = [df_escalado.columns.get_loc(col) for col in list(df_escalado.select_dtypes("object").columns)]    
     return df_escalado, catColumnsPos
-=======
-    return data
->>>>>>> 8c4ba22ee0c9efd6662b4f6defff8baf2d8046e8
