@@ -10,6 +10,10 @@ st.subheader("Contexto.")
 st.write("Una institución bancaria quiere entender mejor el comportamiento de sus clientes para ofrecer\
          servicios personalizados y mejorar la retención.")
 
+with st.container():
+    st.markdown("### Contexto")
+    st.write("Una institución bancaria quiere entender mejor el comportamiento de sus clientes...")
+
 st.subheader("Objetivo.")
 st.write("Analizar el comportamiento financiero de los clientes y proponer una\
          forma de agruparlos en perfiles útiles para el negocio. De esta forma\
