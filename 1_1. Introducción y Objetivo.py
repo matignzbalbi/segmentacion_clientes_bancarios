@@ -21,7 +21,7 @@ st.markdown("Esta aplicación se presenta a modo de resumen. El desarrollo compl
 st.divider()
 
 
-st.markdown("### 👤💏 Alumnos.")
+st.markdown("#### 👤 Alumnos.")
 cols = st.columns(2)
-cols[0].markdown("**Julian Livolsi**  \n**Tomas Martín**  \n**Matias Gonzalez Balbi**  \n**Tomas Agustin Coll**")
-cols[1].markdown("**187445**  \n**Tomas Agustin Coll**")
+cols[0].markdown("Alumnos  \n**Julian Livolsi**  \n**Tomas Martín**  \n**Matias Gonzalez Balbi**  \n**Tomas Agustin Coll**")
+cols[1].markdown("Legajos  \n**187445**  \n**Tomas Agustin Coll**")
