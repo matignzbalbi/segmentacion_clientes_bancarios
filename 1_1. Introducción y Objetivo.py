@@ -2,6 +2,11 @@ import streamlit as st
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
+
+st.markdown("<h1 style='color:#00BFFF;'>Trabajo Final - Laboratorio de Ciencia de Datos</h1>", unsafe_allow_html=True)
+st.markdown("<h3 style='color:#ffffff;'>Grupo 2 – Clientes bancarios.</h3>", unsafe_allow_html=True)
+
+
 st.title("Trabajo Final - Laboratorio de Ciencia de Datos.")
 st.header("Grupo 2 – Clientes bancarios.")
 st.divider()
@@ -9,10 +14,6 @@ st.divider()
 st.subheader("Contexto.")
 st.write("Una institución bancaria quiere entender mejor el comportamiento de sus clientes para ofrecer\
          servicios personalizados y mejorar la retención.")
-
-with st.container():
-    st.markdown("### Contexto")
-    st.write("Una institución bancaria quiere entender mejor el comportamiento de sus clientes...")
 
 st.subheader("Objetivo.")
 st.write("Analizar el comportamiento financiero de los clientes y proponer una\
@@ -24,3 +25,7 @@ st.markdown("Esta aplicación se presenta a modo de resumen. El desarrollo compl
 st.divider()
 
 st.markdown("Alumnos: **Julian Livolsi, Tomas Martin, Matias Gonzalez Balbi, Tomas Agustin Coll**.")
+
+cols = st.columns(2)
+cols[0].markdown("**Julian Livolsi**  \n**Tomas Martín**")
+cols[1].markdown("**Matias Gonzalez Balbi**  \n**Tomas Agustin Coll**")
