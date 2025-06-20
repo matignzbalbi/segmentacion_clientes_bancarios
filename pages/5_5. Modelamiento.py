@@ -50,3 +50,4 @@ Se seleccionaron **10 componentes** mediante el criterio de varianza acumulada:
 
 
 
+

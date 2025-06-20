@@ -89,10 +89,8 @@ def features(data):
 
     
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
-<<<<<<< HEAD
     return data
-=======
-    return data 
+
 
 
 # Modelado 
@@ -119,7 +117,3 @@ def escalado(df):
         
     catColumnsPos = [df_escalado.columns.get_loc(col) for col in list(df_escalado.select_dtypes("object").columns)]    
     return df_escalado, catColumnsPos
-    
-    
-    
->>>>>>> 4ee3a185300d4d04bba6648c39e2d4f2dfb4c7ef

@@ -22,7 +22,7 @@ st.divider()
 df = df[df['Income']<120000]
 
 #cambiamos year birth por age
-df["Age"] = 2021-df["Year_Birth"]
+df["Age"] = 2025-df["Year_Birth"]
 df = df[df['Age']<90]
 
 #Compras totales
