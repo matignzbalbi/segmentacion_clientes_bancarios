@@ -20,8 +20,8 @@ st.divider()
 st.markdown("Esta aplicación se presenta a modo de resumen. El desarrollo completo del análisis se puede encontrar haciendo click [acá](https://colab.research.google.com/drive/1wo_o871ordBlu_YGJjtdV8qPToMFdtuc?usp=sharing#scrollTo=wEJysXCSHAR0).")
 st.divider()
 
-cols = st.columns(4)
-cols[0].markdown("**Julian Livolsi**")
-cols[1].markdown("**Matias Gonzalez Balbi**")
-cols[2].markdown("**Tomas Martín**")
-cols[3].markdown("**Tomas Agustin Coll**")
+
+st.markdown("### 👤💏 Alumnos.")
+cols = st.columns(2)
+cols[0].markdown("**Julian Livolsi**  \n**Tomas Martín**  \n**Matias Gonzalez Balbi**  \n**Tomas Agustin Coll**")
+cols[1].markdown("**187445**  \n**Tomas Agustin Coll**")
