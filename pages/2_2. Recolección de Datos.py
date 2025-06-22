@@ -6,7 +6,6 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 st.markdown("<h1 style='color:#00BFFF;'>Recolección de datos.</h1>", unsafe_allow_html=True)
-st.title("Recolección de datos.")
 
 st.divider()
 

@@ -15,7 +15,6 @@ df = cargar_datos()
 df = limpiar_datos(df)
 
 st.markdown("<h1 style='color:#00BFFF;'>Análisis Exploratorio de Datos.</h1>", unsafe_allow_html=True)
-st.title("Análisis Exploratorio de Datos.")
 st.divider()
 
 # elimino outliers
