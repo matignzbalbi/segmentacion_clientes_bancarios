@@ -13,15 +13,16 @@ st.write("Una institución bancaria quiere entender mejor el comportamiento de s
 
 st.markdown("### 🎯 Objetivo.")
 st.write("Analizar el comportamiento financiero de los clientes y proponer una\
-         forma de agruparlos en perfiles útiles para el negocio. De esta forma\
-         podemos decir que estaremos trabajando en un modelo NO supervisado, específicamente en un modelo de ‘Clustering’.")
+         forma de agruparlos en perfiles útiles para el negocio.")
 
 st.divider()
 st.markdown("Esta aplicación se presenta a modo de resumen. El desarrollo completo del análisis se puede encontrar haciendo click [acá](https://colab.research.google.com/drive/1wo_o871ordBlu_YGJjtdV8qPToMFdtuc?usp=sharing#scrollTo=wEJysXCSHAR0).")
 st.divider()
 
 
-st.markdown("#### 👤 Alumnos.")
+
 cols = st.columns(2)
 cols[0].markdown("**Alumnos**  \nJulian Livolsi  \nTomas Martín  \nMatias Gonzalez Balbi  \nTomas Agustin Coll")
 cols[1].markdown("**Legajos**  \n187445  \n187641  \n205631  \n186116")
+
+

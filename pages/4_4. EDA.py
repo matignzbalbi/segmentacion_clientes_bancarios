@@ -28,6 +28,7 @@ df = df[df['Age']<90]
 #Compras totales
 df['NumTotalPurchases'] = df['NumWebPurchases'] + df['NumCatalogPurchases'] + df['NumStorePurchases'] + df['NumDealsPurchases']
 
+
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.preprocessing import StandardScaler
 from scipy import stats
@@ -137,6 +138,9 @@ fig.update_layout(
 )
 st.plotly_chart(fig)
 st.divider()
+
+#chicos
+df["Children"] = df["Kidhome"] + df["Teenhome"]
 
 fig = px.histogram(df, x="Children", nbins=10, marginal="rug", opacity=0.75)
 fig.update_layout(
