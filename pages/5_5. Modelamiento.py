@@ -43,7 +43,7 @@ with col1:
     ''')
 
 with col2:
-    st.image("images/varianza_acumulada.png", use_container_width=True, caption="Varianza Acumulada")
+    st.image("https://i.imgur.com/1IQtV2w.png", use_container_width=True, caption="Varianza Acumulada")
 
 
 
