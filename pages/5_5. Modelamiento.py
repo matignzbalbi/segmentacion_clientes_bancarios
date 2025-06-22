@@ -58,17 +58,26 @@ Por otro lado, logramos observar una alta **colinealidad** en ciertas variables 
 col1, col2 = st.columns([1, 2])
 
 st.subheader("Modelos Aplicados.")
+
 for modelo, proceso in [
-    ("K-Prototypes.", "**K-Prototypes** nos permite trabajar con variables categoricas y numéricas, por lo cuál es una opción ideal para nuestros datos. Realizamos un escalado de las variables numéricas junto con el filtrado de columnas para reducir la colinealidad."),
-    ("K-Means.", "**K-Means** solo nos permite trabajar con variables numéricas por lo cuál utilizamos **OrdinalEncoder** para ``Education`` y **LabelEncoder** para ``Marital_Status``, nuestras dos variables categóricas."),
-    ("Agglometative.", "Al igual que K-Means, el **agrupamiento aglomerativo** solo trata con variables numéricas, por lo que recibió los datos de la misma forma.<br> En cuanto al método de enlace, el que mejor resultado nos proporcionó fue ``ward``."),
+    ("K-Prototypes.", 
+     """**K-Prototypes** nos permite trabajar con variables categóricas y numéricas, por lo cuál es una opción ideal para nuestros datos.  
+Realizamos un escalado de las variables numéricas junto con el filtrado de columnas para reducir la colinealidad."""
+    ),
+    ("K-Means.", 
+     """**K-Means** solo nos permite trabajar con variables numéricas, por lo cuál utilizamos **OrdinalEncoder** para ``Education`` y **LabelEncoder** para ``Marital_Status``, nuestras dos variables categóricas."""
+    ),
+    ("Agglomerative.", 
+     """Al igual que K-Means, el **agrupamiento aglomerativo** solo trata con variables numéricas, por lo que recibió los datos de la misma forma.  
+En cuanto al método de enlace, el que mejor resultado nos proporcionó fue ``ward``."""
+    ),
 ]:
-    c1, c2 = st.columns([1, 3]) 
+    c1, c2 = st.columns([1, 3])
     with c1:
         st.markdown(f"**Modelo:** {modelo}")
     with c2:
-        st.markdown(proceso, unsafe_allow_html=True)
-    
+        st.markdown(proceso)
+
     
     
     
