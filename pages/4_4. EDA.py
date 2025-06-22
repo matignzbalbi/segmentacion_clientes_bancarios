@@ -190,7 +190,7 @@ numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns
 corr_matrix = df[numeric_cols].corr()
 
 np.fill_diagonal(corr_matrix.values, np.nan)
-mask = (corr_matrix.abs() < 0.65) | (corr_matrix.isna())  # Invertimos la condición
+mask = (corr_matrix.abs() < 0.70) | (corr_matrix.isna())  # Invertimos la condición
 filtered_corr = corr_matrix.mask(mask)  # Esto mantendrá solo |r| ≤ 0.75
 
 # Eliminar filas/columnas completamente vacías
