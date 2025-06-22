@@ -228,6 +228,7 @@ plt.tight_layout()
 
 # Mostrar en Streamlit
 st.pyplot(fig)
+st.plotly_chart()
 
 st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
 codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
