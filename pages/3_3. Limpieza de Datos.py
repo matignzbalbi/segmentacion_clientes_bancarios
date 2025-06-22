@@ -278,4 +278,22 @@ st.write("Observamos la cantidad de Outliers identificados por los `TRES` métod
 data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
 st.write("Outliers presentes en los tres métodos:", data['outlier_todos'].sum())
 
+# Calcular las cantidades
+outliers_iqr = data['is_outlier_IQR'].sum()
+outliers_z = data['is_outlier_Z'].sum()
+outliers_lof = data['is_outlier_LOF'].sum()
+outliers_all = (
+    data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
+).sum()
+
+# Crear tabla comparativa
+outlier_summary = pd.DataFrame({
+    'Método': ['IQR', 'Z-Score', 'LOF', 'Los tres métodos'],
+    'Cantidad de outliers': [outliers_iqr, outliers_z, outliers_lof, outliers_all]
+})
+
+# Mostrar la tabla
+st.dataframe(outlier_summary)
+
+
 st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos.")
