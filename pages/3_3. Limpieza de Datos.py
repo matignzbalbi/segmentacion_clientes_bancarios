@@ -227,7 +227,7 @@ axes[1].set_ylabel('Frecuencia',color='white')
 plt.tight_layout()
 
 # Mostrar en Streamlit
-st.plotly_chart(fig, use_container_width=True)
+st.pyplot(fig)
 
 st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
 codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
