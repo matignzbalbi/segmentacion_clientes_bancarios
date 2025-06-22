@@ -159,13 +159,6 @@ def features(data):
     #Años pertenecientes del cliente desde que se agrego a la base de datos
     data['Customer_Tenure'] = 2021 - data['Dt_Customer'].dt.year
     
-    #Nos quedamos con los clientes que tengan un salario < 120000
-    data = data[data['Income']<120000]
-
-    #Nos quedamos con los clientes que tengan < 90
-    data = data[data['Age']<90]
-
-    
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
     return data 
 
