@@ -3,7 +3,6 @@ import streamlit as st
 import numpy as np
 from utils import cargar_datos
 from utils import limpiar_datos
-from utils import features
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.preprocessing import StandardScaler
 from scipy import stats
@@ -137,6 +136,32 @@ with col2:
 st.divider()
 
 st.subheader("Creación de nuevas variables.")
+
+def features(data):
+    #Edad actual
+    data["Age"] = 2021-data["Year_Birth"]
+
+    #Gasto total en diversos items
+    data["Spent"] = data["MntWines"]+ data["MntFruits"]+ data["MntMeatProducts"]+ data["MntFishProducts"]+ data["MntSweetProducts"]+ data["MntGoldProds"]
+
+    #Total de menores
+    data["Children"]=data["Kidhome"]+data["Teenhome"]
+
+    #Miembros totales de la familia
+    data["Family_Size"] = data["Marital_Status"].replace({"Single": 1, "Married":2, "Together":2})+ data["Children"]
+
+    #Campañas totales aceptadas
+    data['TotalAcceptedCmp'] = data['AcceptedCmp1'] + data['AcceptedCmp2'] + data['AcceptedCmp3'] + data['AcceptedCmp4'] + data['AcceptedCmp5'] + data['Response']
+
+    #Compras totales
+    data['NumTotalPurchases'] = data['NumWebPurchases'] + data['NumCatalogPurchases'] + data['NumStorePurchases'] + data['NumDealsPurchases']
+
+    #Años pertenecientes del cliente desde que se agrego a la base de datos
+    data['Customer_Tenure'] = 2021 - data['Dt_Customer'].dt.year
+
+    data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
+    return data 
+
 df = limpiar_datos(df)
 df = features(df)
 
