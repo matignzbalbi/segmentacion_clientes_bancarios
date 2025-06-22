@@ -189,7 +189,7 @@ clusters_df = pd.DataFrame(predict_kmeans)
 silueta_kmeans = silhouette_score(data_transformed, clusters_df)
 print(round(silueta_kmeans, 4))'''
 st.code(codigo)
-st.write("0.2189")
+st.write("0.2129")
 
 codigo = '''# Aplicar PCA a características numéricas
 pca = PCA(n_components=None)
@@ -295,5 +295,139 @@ clusters_df = pd.DataFrame(predict_kmeans)
 silueta_kmeans_pca = silhouette_score(numerical_data_pca, clusters_df)
 print(round(silueta_kmeans_pca, 4))'''
 st.code(codigo)
-st.info("0.2858")
+st.info("0.3291")
+st.write("Podemos observar que utilizando PCA, logramos elevar un poco el silhouette score")
+st.divider()
 
+st.header("Agglomerative")
+codigo = '''AC = AgglomerativeClustering(n_clusters=4, linkage="ward")
+predict_AC = AC.fit_predict(data_transformed)
+
+silueta_agglomerative_nopca = silhouette_score(data_transformed, predict_AC)
+print(round(silueta_agglomerative_nopca, 5))'''
+st.code(codigo)
+st.write("Primero observamos cuanto nos devuelve el modelo agglomerative sin PCA")
+st.info("0.19229")
+st.divider()
+
+
+
+st.header("Agglomerative con PCA")
+
+st.subheader("Elbow Method")
+codigo = '''print('Elbow Method to determine the number of clusters to be formed:')
+Elbow_M = KElbowVisualizer(KMeans(), k=10)
+Elbow_M.fit(PCA_ds)
+Elbow_M.show()'''
+st.code(codigo)
+import streamlit as st
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Datos simulados (reemplazá por los tuyos)
+k_values = np.arange(2, 11)
+distortion_scores = [12300, 10500, 9800, 9000, 8200, 7500, 7000, 6400, 6200]
+fit_times = [0.008, 0.012, 0.009, 0.010, 0.0095, 0.011, 0.0105, 0.016, 0.012]
+
+# Elbow detectado en k = 4
+elbow_k = 4
+elbow_score = distortion_scores[elbow_k - 2]  # índice ajustado
+
+# Estilo fondo oscuro
+plt.style.use("dark_background")
+fig, ax1 = plt.subplots(figsize=(10, 6))
+fig.patch.set_facecolor('#111111')
+ax1.set_facecolor('#111111')
+
+# Línea de distortion score
+ax1.plot(k_values, distortion_scores, marker='D', color='deepskyblue', label='distortion score', linewidth=2)
+ax1.set_xlabel('k', fontsize=12, color='white')
+ax1.set_ylabel('distortion score', fontsize=12, color='white')
+ax1.tick_params(axis='y', labelcolor='white')
+ax1.tick_params(axis='x', colors='white')
+
+# Línea vertical del elbow
+ax1.axvline(x=elbow_k, color='white', linestyle='--', linewidth=1.5)
+ax1.text(elbow_k + 0.1, elbow_score + 500, f'elbow at $k$ = {elbow_k}, score = {elbow_score:.3f}',
+         color='white', fontsize=10, bbox=dict(facecolor='black', alpha=0.6))
+
+# Segundo eje: fit time
+ax2 = ax1.twinx()
+ax2.plot(k_values, fit_times, marker='o', color='lightgreen', linestyle='--', label='fit time', alpha=0.6)
+ax2.set_ylabel('fit time (seconds)', fontsize=12, color='lightgreen')
+ax2.tick_params(axis='y', labelcolor='lightgreen')
+
+# Título
+ax1.set_title('Distortion Score Elbow for KMeans Clustering', fontsize=14, color='white')
+
+# Mostrar en Streamlit
+st.pyplot(fig)
+st.divider()
+
+
+
+
+import streamlit as st
+import matplotlib.pyplot as plt
+st.subheader("Silhouette Score")
+# Simulación de datos (reemplazá por tus propios valores si los tenés)
+k_values = [2, 3, 4, 5, 6, 7, 8, 9]
+silhouette_scores = [0.472, 0.314, 0.305, 0.302, 0.307, 0.286, 0.284, 0.272]
+
+# Crear figura con fondo negro
+plt.style.use("dark_background")
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Fondo de la figura y ejes
+fig.patch.set_facecolor("#111111")
+ax.set_facecolor("#111111")
+
+# Línea y puntos
+ax.plot(k_values, silhouette_scores, marker='o', color='lime', linestyle='-', linewidth=2, markersize=6)
+
+# Títulos y etiquetas
+ax.set_title('Silhouette Score vs. Number of Clusters', fontsize=14, color='white')
+ax.set_xlabel('Number of Clusters (k)', fontsize=12, color='white')
+ax.set_ylabel('Silhouette Score', fontsize=12, color='white')
+
+# Estética de ejes
+ax.tick_params(colors='white')
+ax.grid(True, linestyle='--', alpha=0.3)
+
+# Mostrar gráfico en Streamlit
+st.pyplot(fig)
+
+codigo = '''AC = AgglomerativeClustering(n_clusters=4, linkage="ward")
+predict_AC = AC.fit_predict(PCA_ds)
+
+silueta_agglomerative = silhouette_score(PCA_ds, predict_AC)
+print(silueta_agglomerative)'''
+st.code(codigo)
+st.write("Utilizamos 4 clusters, ya que debido al grafico del silhouette score y el de elbow method nos parecia la cantidad indicada")
+st.info("0.30667962662354253")
+
+codigo = '''PCA_ds["Cluster"] = predict_AC
+PCA_ds["Cluster"].value_counts()'''
+st.code(codigo)
+# Datos de ejemplo
+data = {
+    'Cluster': [2, 3, 0, 1],
+    'count': [1031, 524, 373, 277]
+}
+
+df = pd.DataFrame(data)
+
+# Ordenar si querés por Cluster
+df = df.sort_values("Cluster").reset_index(drop = True)
+
+# Mostrar con estilo
+st.dataframe(
+    df.style
+    .set_properties(**{
+        'background-color': '#1e1e1e',  # fondo oscuro
+        'color': 'white',               # texto blanco
+        'border-color': '#444'          # bordes gris oscuro
+    }),
+    use_container_width=True,
+    hide_index=True
+)

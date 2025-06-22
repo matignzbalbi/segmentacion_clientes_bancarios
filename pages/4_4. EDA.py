@@ -221,23 +221,42 @@ else:
 st.divider()
 
 st.subheader("Gráfico entre Income y Spent")
-plt.figure(figsize=(10, 6))
+
+# Cambiar el estilo a fondo oscuro
+plt.style.use("dark_background")  # Tema general oscuro
+
+# Crear la figura manualmente
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Gráfico de dispersión con Seaborn
 sns.scatterplot(
     data=df,
     x="Income",
     y="Spent",
-    color="red", 
-    alpha=0.6     
+    color="red",
+    alpha=1,
+    ax=ax
 )
 
-plt.title("Income vs Spent", fontsize=16)
-plt.xlabel("Income", fontsize=12)
-plt.ylabel("Spent", fontsize=12)
-plt.grid(True, linestyle="--", alpha=0.3)
+# Personalizar ejes y fondo
+ax.set_facecolor("#111111")  # Fondo interno del gráfico
+fig.patch.set_facecolor("#111111")  # Fondo externo (figura completa)
 
-st.pyplot(plt)
+# Títulos y etiquetas
+ax.set_title("Income vs Spent", fontsize=16, color="white")
+ax.set_xlabel("Income", fontsize=12, color="white")
+ax.set_ylabel("Spent", fontsize=12, color="white")
+
+# Ejes en color blanco
+ax.tick_params(colors="white")
+ax.grid(True, linestyle="--", alpha=0.3)
+
+# Mostrar en Streamlit
+st.pyplot(fig)
+
 st.write("Se observa una relación positiva (a mayor ingreso, mayor gasto) pero con una dispersión significativa. La mayoría de los datos se concentran en ingresos menores a $60000")
 st.divider()
+
 
 st.header("Income en relación a Education")
 # Configurar figura
