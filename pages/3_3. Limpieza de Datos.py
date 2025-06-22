@@ -327,4 +327,3 @@ codigo = '''def replace_outliers_with_median(df, column):
 for col in num_cols:
     data = replace_outliers_with_median(data, col)'''
 st.code(codigo)
-

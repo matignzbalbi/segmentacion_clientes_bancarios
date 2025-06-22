@@ -25,6 +25,3 @@ st.write("Lo utilizamos teniendo en cuenta solo las variables númericas de nues
 st.subheader("AgglomerativeClustering.")
 st.write("Lo utilizamos porque es un algoritmo de clustering jerárquico que empieza agrupando cada punto como su propio grupo, y los va uniendo progresivamente según su cercanía, hasta formar los clusters finales. Es útil para detectar estructuras de grupo complejas, incluso con formas irregulares.")
 st.divider()
-
-
-

@@ -23,5 +23,5 @@ st.divider()
 
 st.markdown("#### 👤 Alumnos.")
 cols = st.columns(2)
-cols[0].markdown("**Alumnos**  \nJulian Livolsi  \n**Tomas Martín  \nMatias Gonzalez Balbi  \nTomas Agustin Coll")
+cols[0].markdown("**Alumnos**  \nJulian Livolsi  \nTomas Martín  \nMatias Gonzalez Balbi  \nTomas Agustin Coll")
 cols[1].markdown("**Legajos**  \n187445  \n187641  \n205631  \n186116")
