@@ -22,14 +22,6 @@ st.divider()
 st.header("Nulos y duplicados.")
 st.subheader("Nulos.")
 st.write("Analizaremos si nuestra base de datos cuenta con valores nulos y/o con valores duplicados.")
-codigo = '''def dataframe_info(data):
-    info = pd.DataFrame({
-        "Columnas": df.columns,
-        "Valores nulos": df.isnull().sum(),
-        "% de nulos": round(df.isnull().mean() * 100, 2)
-    })
-    return info'''
-st.code(codigo) 
 def dataframe_info(df):
     info = pd.DataFrame({
         "Columnas": df.columns,
@@ -145,7 +137,6 @@ with col2:
 st.divider()
 
 st.subheader("Creación de nuevas variables.")
-df = limpiar_datos(df)
 df = features(df)
 
 st.markdown('''
@@ -290,8 +281,6 @@ lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
 data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
 
 st.write("Observamos la cantidad de Outliers identificados por `IQR`:")
-codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
-st.code(codigo)
 st.write("Outliers por IQR:", data['is_outlier_IQR'].sum())
 
 st.write("Observamos la cantidad de Outliers identificados por `Z-score`:")
