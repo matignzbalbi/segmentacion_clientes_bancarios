@@ -137,6 +137,7 @@ with col2:
 st.divider()
 
 st.subheader("Creación de nuevas variables.")
+df = limpiar_datos(df)
 df = features(df)
 
 st.markdown('''
