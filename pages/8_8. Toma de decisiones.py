@@ -1,6 +1,7 @@
 import streamlit as st
 
 st.set_page_config(layout="wide")
+st.markdown("<h1 style='color:#00BFFF;'>Toma de decisiones.</h1>", unsafe_allow_html=True)
 st.title("Toma de decisiones.")
 st.divider()
 

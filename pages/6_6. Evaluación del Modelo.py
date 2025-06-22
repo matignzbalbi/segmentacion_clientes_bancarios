@@ -16,6 +16,7 @@ st.set_page_config(layout="wide")
 
 df = cargar_datos()
 
+st.markdown("<h1 style='color:#00BFFF;'>Evaluación del Modelo.</h1>", unsafe_allow_html=True)
 st.title("Evaluación del Modelo.")
 st.divider()
 st.write("""Como se detallo en 4. Modelamiento, se realizaron dos modelos con K-Prototypes donde uno incluyé **PCA** y el otro no para 

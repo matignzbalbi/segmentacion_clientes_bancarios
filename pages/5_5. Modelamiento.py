@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 st.set_page_config(layout="wide")
 df = cargar_datos()
 
+st.markdown("<h1 style='color:#00BFFF;'>Modelamiento.</h1>", unsafe_allow_html=True)
 st.title("Modelamiento.")
 st.divider()
 
