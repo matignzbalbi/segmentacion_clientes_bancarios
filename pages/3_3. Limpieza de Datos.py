@@ -264,20 +264,7 @@ X_scaled = scaler.fit_transform(data[num_vars])
 lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
 data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
 
-st.write("Observamos la cantidad de Outliers identificados por `IQR`:")
-st.write("Outliers por IQR:", data['is_outlier_IQR'].sum())
-
-st.write("Observamos la cantidad de Outliers identificados por `Z-score`:")
-st.write("Outliers por Z-score:", data['is_outlier_Z'].sum())
-
-st.write("Observamos la cantidad de Outliers identificados por `LOF`:")
-st.write("Outliers por LOF:", data['is_outlier_LOF'].sum())
-
-
-st.write("Observamos la cantidad de Outliers identificados por los `TRES` métodos:")
-data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
-st.write("Outliers presentes en los tres métodos:", data['outlier_todos'].sum())
-
+st.write("Analizamos cuantos outliers detecta cada método y cuantos outliers son detectados por los TRES métodosal mismo tiempo.")
 # Calcular las cantidades
 outliers_iqr = data['is_outlier_IQR'].sum()
 outliers_z = data['is_outlier_Z'].sum()
@@ -288,7 +275,7 @@ outliers_all = (
 
 # Crear tabla comparativa
 outlier_summary = pd.DataFrame({
-    'Método': ['IQR', 'Z-Score', 'LOF', 'Los tres métodos'],
+    'Método': ['IQR', 'Z-Score', 'LOF', 'Los tres métodos (intersección)'],
     'Cantidad de outliers': [outliers_iqr, outliers_z, outliers_lof, outliers_all]
 })
 
