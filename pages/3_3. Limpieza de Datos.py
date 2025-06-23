@@ -162,8 +162,8 @@ def features(data):
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
     return data 
 
-df = features(df)
 df = limpiar_datos(df)
+df = features(df)
 
 st.markdown('''
             Una vez fueron limpiados, implementamos nuevas features como:
