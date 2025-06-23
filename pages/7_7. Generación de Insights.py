@@ -104,7 +104,11 @@ data = data.drop(columns=['Z_Revenue','Z_CostContact','ID'])
 data["Age"] = 2025 - data["Year_Birth"]
 data["Spent"] = data["MntWines"] + data["MntFruits"] + data["MntMeatProducts"] + data["MntFishProducts"] + data["MntSweetProducts"] + data["MntGoldProds"]
 data["Children"] = data["Kidhome"] + data["Teenhome"]
-data["Family_Size"] = data["Marital_Status"].replace({"Single": 1, "Married": 2, "Together": 2, "Divorced": 1, "Widow": 1}) + data["Children"]
+estado_numerico = data["Marital_Status"].replace({
+    "Single": 1, "Married": 2, "Together": 2, "Divorced": 1, "Widow": 1
+}).astype(int)
+
+data["Family_Size"] = estado_numerico + data["Children"]
 data['TotalAcceptedCmp'] = data[['AcceptedCmp1','AcceptedCmp2','AcceptedCmp3','AcceptedCmp4','AcceptedCmp5','Response']].sum(axis=1)
 data['NumTotalPurchases'] = data[['NumWebPurchases','NumCatalogPurchases','NumStorePurchases','NumDealsPurchases']].sum(axis=1)
 data['Customer_Tenure'] = 2025 - data['Dt_Customer'].dt.year
