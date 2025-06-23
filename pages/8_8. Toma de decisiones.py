@@ -108,7 +108,7 @@ Compras:
 
 Familia:
 - Perfil variado: casados, solteros o en pareja.
-- Generalmente tienen cero o un hijo.
+- Seguramente cuente con un hijo o ninguno.
 
 
 Perfil:
@@ -145,7 +145,7 @@ Compras:
 
 Familia:
 - Perfil variado: solteros, casados o en pareja.
-- Mayoría sin hijos, aunque algunos están casados.
+- Seguramente este grupo la mayoria no tengan hijos, aunque algunos están casados.
 
 
 Perfil:
