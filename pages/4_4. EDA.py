@@ -525,3 +525,81 @@ styled_df = education_stats.style\
 st.dataframe(styled_df)
 st.write("Podemos ver que el estado civil no presenta una relacion con el consumo de productos")
 st.divider()
+
+
+
+
+
+# Agrupación y cálculo de métricas
+education_stats = df.groupby('Marital_Status')[['NumDealsPurchases', 'NumWebPurchases', 'NumCatalogPurchases',
+            'NumWebVisitsMonth', 'NumTotalPurchases']].agg(['mean', 'sum'])
+
+# Formateo para mejor visualización
+education_stats.columns = ['_'.join(col).strip() for col in education_stats.columns.values]
+education_stats.reset_index(inplace=True)
+
+# Mostrar en Streamlit
+st.title("Número compras según el Estado Civil")
+
+# DataFrame con estilo
+styled_df = education_stats.style\
+    .format({
+        'NumDealsPurchases_mean': '${:,.2f}',
+        'NumDealsPurchases_sum': '${:,.2f}',
+        'NumWebPurchases_mean': '${:,.2f}',
+        'NumWebPurchases_sum': '${:,.2f}',
+        'NumCatalogPurchases_mean': '${:,.2f}',
+        'NumCatalogPurchases_sum': '${:,.2f}',
+        'NumWebVisitsMonth_mean': '${:,.2f}',
+        'NumWebVisitsMonth_sum': '${:,.2f}',
+        'NumTotalPurchases_mean': '${:,.2f}',
+        'NumTotalPurchases_sum': '${:,.2f}',
+    })\
+    .set_properties(**{'text-align': 'center'})\
+    .set_table_styles([{
+        'selector': 'th',
+        'props': [('background-color', '#f0f2f6'), ('font-weight', 'bold')]
+    }])
+
+st.dataframe(styled_df)
+st.write("Podemos ver ")
+st.divider()
+
+
+
+
+
+# Agrupación y cálculo de métricas
+education_stats = df.groupby('Education')[['NumDealsPurchases', 'NumWebPurchases', 'NumCatalogPurchases',
+            'NumWebVisitsMonth', 'NumTotalPurchases']].agg(['mean', 'sum'])
+
+# Formateo para mejor visualización
+education_stats.columns = ['_'.join(col).strip() for col in education_stats.columns.values]
+education_stats.reset_index(inplace=True)
+
+# Mostrar en Streamlit
+st.title("Número compras según el Nivel Educativo")
+
+# DataFrame con estilo
+styled_df = education_stats.style\
+    .format({
+        'NumDealsPurchases_mean': '${:,.2f}',
+        'NumDealsPurchases_sum': '${:,.2f}',
+        'NumWebPurchases_mean': '${:,.2f}',
+        'NumWebPurchases_sum': '${:,.2f}',
+        'NumCatalogPurchases_mean': '${:,.2f}',
+        'NumCatalogPurchases_sum': '${:,.2f}',
+        'NumWebVisitsMonth_mean': '${:,.2f}',
+        'NumWebVisitsMonth_sum': '${:,.2f}',
+        'NumTotalPurchases_mean': '${:,.2f}',
+        'NumTotalPurchases_sum': '${:,.2f}',
+    })\
+    .set_properties(**{'text-align': 'center'})\
+    .set_table_styles([{
+        'selector': 'th',
+        'props': [('background-color', '#f0f2f6'), ('font-weight', 'bold')]
+    }])
+
+st.dataframe(styled_df)
+st.write("Podemos ver ")
+st.divider()
