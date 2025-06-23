@@ -90,7 +90,7 @@ for p in ax.patches:
 # Mostrar en Streamlit
 plt.tight_layout()
 st.pyplot(plt.gcf())
-st.divider
+st.divider()
 
 #####################################################################################################
 st.header("Análisis de los clusters.")
