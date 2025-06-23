@@ -562,7 +562,7 @@ styled_df = education_stats.style\
     }])
 
 st.dataframe(styled_df)
-st.write("Podemos ver ")
+st.write("Podemos ver que el estado civil no presenta una relacion con el numero de compras")
 st.divider()
 
 
@@ -583,16 +583,16 @@ st.title("Número compras según el Nivel Educativo")
 # DataFrame con estilo
 styled_df = education_stats.style\
     .format({
-        'NumDealsPurchases_mean': '${:,.2f}',
-        'NumDealsPurchases_sum': '${:,.2f}',
-        'NumWebPurchases_mean': '${:,.2f}',
-        'NumWebPurchases_sum': '${:,.2f}',
-        'NumCatalogPurchases_mean': '${:,.2f}',
-        'NumCatalogPurchases_sum': '${:,.2f}',
-        'NumWebVisitsMonth_mean': '${:,.2f}',
-        'NumWebVisitsMonth_sum': '${:,.2f}',
-        'NumTotalPurchases_mean': '${:,.2f}',
-        'NumTotalPurchases_sum': '${:,.2f}',
+        'NumDealsPurchases_mean': '{:,.2f}',
+        'NumDealsPurchases_sum': '{:,.2f}',
+        'NumWebPurchases_mean': '{:,.2f}',
+        'NumWebPurchases_sum': '{:,.2f}',
+        'NumCatalogPurchases_mean': '{:,.2f}',
+        'NumCatalogPurchases_sum': '{:,.2f}',
+        'NumWebVisitsMonth_mean': '{:,.2f}',
+        'NumWebVisitsMonth_sum': '{:,.2f}',
+        'NumTotalPurchases_mean': '{:,.2f}',
+        'NumTotalPurchases_sum': '{:,.2f}',
     })\
     .set_properties(**{'text-align': 'center'})\
     .set_table_styles([{
@@ -601,5 +601,5 @@ styled_df = education_stats.style\
     }])
 
 st.dataframe(styled_df)
-st.write("Podemos ver ")
+st.write("Podemos ver que el nivel de educacion presenta una relacion con las columnas relacionadas al numero de compras")
 st.divider()
