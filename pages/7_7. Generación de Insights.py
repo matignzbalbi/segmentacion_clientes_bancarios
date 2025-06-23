@@ -104,9 +104,25 @@ data = data.drop(columns=['Z_Revenue','Z_CostContact','ID'])
 data["Age"] = 2025 - data["Year_Birth"]
 data["Spent"] = data["MntWines"] + data["MntFruits"] + data["MntMeatProducts"] + data["MntFishProducts"] + data["MntSweetProducts"] + data["MntGoldProds"]
 data["Children"] = data["Kidhome"] + data["Teenhome"]
-estado_numerico = data["Marital_Status"].replace({
-    "Single": 1, "Married": 2, "Together": 2, "Divorced": 1, "Widow": 1
-}).astype(int)
+
+# Paso 2: Reemplazo seguro con fillna
+estado_numerico = data['Marital_Status'].replace({
+    "Single": 1,
+    "Married": 2,
+    "Together": 2,
+    "Divorced": 1,
+    "Widow": 1,
+    "Alone": 1,
+    "Absurd": 1,
+    "YOLO": 1
+}).fillna(1)
+
+# Paso 3: Conversión segura
+estado_numerico = pd.to_numeric(estado_numerico, errors='coerce').fillna(1).astype(int)
+
+# Finalmente calcular Family_Size
+data["Family_Size"] = estado_numerico + data["Children"]
+
 
 data["Family_Size"] = estado_numerico + data["Children"]
 data['TotalAcceptedCmp'] = data[['AcceptedCmp1','AcceptedCmp2','AcceptedCmp3','AcceptedCmp4','AcceptedCmp5','Response']].sum(axis=1)
