@@ -42,10 +42,14 @@ st.dataframe(silueta_por_modelo)
 
 df_silueta = pd.DataFrame(silueta_por_modelo)
 
-sns.set_style("whitegrid")
-plt.figure(figsize=(10, 6))
-colors = ["#3498db", "#2ecc71", "#f39c12", "#e74c3c"]
+# Estilo de fondo negro
+sns.set_style("darkgrid")
+plt.figure(figsize=(10, 6), facecolor='black')
 
+# Colores inspirados en el otro gráfico
+colors = ["tomato", "lime", "#f39c12", "#e74c3c", "#9b59b6", "#1abc9c"]
+
+# Barplot
 ax = sns.barplot(
     x="Modelo",
     y="Coef_Silueta",
@@ -53,12 +57,18 @@ ax = sns.barplot(
     palette=colors,
     linewidth=1
 )
-plt.title("Comparación de Coeficientes de Silueta por Modelo", fontsize=14, pad=20, fontweight="bold")
-plt.xlabel("Modelo", fontsize=12, labelpad=10)
-plt.ylabel("Coeficiente de Silueta", fontsize=12, labelpad=10)
-plt.ylim(0, 0.6)
 
-# Añadir etiquetas de valor en las barras
+# Títulos y etiquetas blancas
+ax.set_title("Comparación de Coeficientes de Silueta por Modelo", fontsize=14, pad=20, fontweight="bold", color='white')
+ax.set_xlabel("Modelo", fontsize=12, labelpad=10, color='white')
+ax.set_ylabel("Coeficiente de Silueta", fontsize=12, labelpad=10, color='white')
+ax.set_ylim(0, 0.6)
+ax.set_facecolor('black')
+plt.gcf().patch.set_facecolor('black')
+ax.tick_params(colors='white')
+ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right', color='white')
+
+# Etiquetas en barras
 for p in ax.patches:
     ax.annotate(
         f"{p.get_height():.2f}",
@@ -66,9 +76,10 @@ for p in ax.patches:
         ha="center", va="center",
         xytext=(0, 10),
         textcoords="offset points",
-        fontsize=10
+        fontsize=10,
+        color='white'
     )
 
-# Mostrar gráfico
+# Mostrar en Streamlit
 plt.tight_layout()
 st.pyplot(plt.gcf())
