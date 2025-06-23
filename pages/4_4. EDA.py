@@ -482,6 +482,7 @@ styled_df = education_stats.style\
     }])
 
 st.dataframe(styled_df)
+st.write("Podemos ver que el nivel educativo tiene una fuerte relacion con el consumo de vino")
 st.divider()
 
 
@@ -522,4 +523,5 @@ styled_df = education_stats.style\
     }])
 
 st.dataframe(styled_df)
+st.write("Podemos ver que el estado civil no presenta una relacion con el consumo de productos")
 st.divider()
