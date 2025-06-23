@@ -172,12 +172,8 @@ lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
 data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
 
 
-
-print("Outliers por IQR:", data['is_outlier_IQR'].sum())
-print("Outliers por Z-score:", data['is_outlier_Z'].sum())
-print("Outliers por LOF:", data['is_outlier_LOF'].sum())
 data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
-print("Outliers detectados por los 3 métodos:", data['outlier_todos'].sum())
+
 
 def replace_confirmed_outliers_with_median(df, column):
     median = df[column].median()
@@ -188,6 +184,10 @@ for col in num_vars:
     data = replace_confirmed_outliers_with_median(data, col)
 
 data = data.drop(columns=["is_outlier_LOF", "outlier_todos", "is_outlier_IQR", "is_outlier_Z"])
+
+data = data[["Education", "Marital_Status", "Income", "Recency", "Age",
+ "MntWines", "MntFruits", "MntMeatProducts", "MntFishProducts", "MntSweetProducts", "MntGoldProds",
+ "TotalAcceptedCmp", 'NumWebPurchases','NumCatalogPurchases', 'NumStorePurchases', 'NumDealsPurchases','NumWebVisitsMonth']]
 
 # Separar columnas categóricas y numéricas
 categorical_cols = data.select_dtypes(include=['object']).columns.tolist()
