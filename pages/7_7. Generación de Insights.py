@@ -230,7 +230,7 @@ ax.set_ylabel('Cantidad de Clientes')
 ax.set_xticklabels(ax.get_xticklabels(), rotation=0)
 
 # Mostrar en Streamlit
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 plt.figure(figsize=(12, 6))
 sns.scatterplot(x='Income', y='MntMeatProducts', data=data, hue='clusters', palette='Set2')
@@ -248,7 +248,7 @@ for i, col in enumerate(mnt_cols):
                     ax=ax[row, col_idx])
     ax[row, col_idx].set_title(f'Amount of {col.replace("Mnt", "")} (Original Scale)')
 plt.tight_layout()
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
@@ -268,7 +268,7 @@ for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
 
 plt.tight_layout()
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
@@ -288,7 +288,7 @@ for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
 
 plt.tight_layout()
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
@@ -308,7 +308,7 @@ for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
 
 plt.tight_layout()
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 marital_status_by_cluster = data.groupby('clusters')['Marital_Status'].value_counts(normalize=True).unstack().fillna(0)
 
@@ -328,7 +328,7 @@ for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
 
 plt.tight_layout()
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 education_by_cluster = data.groupby('clusters')['Education'].value_counts(normalize=True).unstack().fillna(0)
 
@@ -348,7 +348,7 @@ for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
 
 plt.tight_layout()
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 Income_by_cluster = data.groupby('clusters')['Income'].mean().reset_index()
 
@@ -362,7 +362,7 @@ ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 NumWebVisitsMonth_by_cluster = data.groupby('clusters')['NumWebVisitsMonth'].mean().reset_index()
 
@@ -376,7 +376,7 @@ ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 Recency_by_cluster = data.groupby('clusters')['Recency'].mean().reset_index()
 
@@ -390,7 +390,7 @@ ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 TotalAcceptedCmp_by_cluster = data.groupby('clusters')['TotalAcceptedCmp'].mean().reset_index()
 
@@ -404,7 +404,7 @@ ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 Age_by_cluster = data.groupby('clusters')['Age'].mean().reset_index()
 
@@ -418,7 +418,7 @@ ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 numeric_cols = data.select_dtypes(include=np.number).columns.tolist()
 
@@ -430,4 +430,4 @@ for col in numeric_cols:
     plt.title(f'Promedio de {col} por Cluster', fontsize=14)
     plt.xlabel('Cluster', fontsize=12)
     plt.ylabel(f'Promedio de {col}', fontsize=12)
-    st.pyplot(fig)
+    st.pyplot(plt.gcf()) 
