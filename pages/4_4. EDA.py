@@ -495,7 +495,7 @@ education_stats.columns = ['_'.join(col).strip() for col in education_stats.colu
 education_stats.reset_index(inplace=True)
 
 # Mostrar en Streamlit
-st.title("Compras según el Nivel Educativo")
+st.title("Compras según el Estado Civil")
 
 # DataFrame con estilo
 styled_df = education_stats.style\
