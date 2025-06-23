@@ -228,7 +228,18 @@ plt.tight_layout()
 
 # Mostrar en Streamlit
 st.pyplot(fig)
-st.plotly_chart()
+
+
+import plotly.express as px
+
+# Histograma de Income
+fig_income = px.histogram(df, x='Income', nbins=30, title='Distribución de Income')
+st.plotly_chart(fig_income, use_container_width=True)
+
+# Histograma de Age
+fig_age = px.histogram(df, x='Age', nbins=30, title='Distribución de Age')
+st.plotly_chart(fig_age, use_container_width=True)
+
 
 st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
 codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
