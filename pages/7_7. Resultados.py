@@ -110,7 +110,7 @@ data["Children"] = data["Kidhome"] + data["Teenhome"]
 estado_numerico = data['Marital_Status'].replace({
     "Single": 1,
     "Married": 2,
-    "Together": 2,
+    "Together": 3,
     "Divorced": 1,
     "Widow": 1,
     "Alone": 1,
