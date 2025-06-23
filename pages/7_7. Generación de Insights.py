@@ -71,4 +71,4 @@ for p in ax.patches:
 
 # Mostrar gráfico
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
