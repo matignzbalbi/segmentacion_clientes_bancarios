@@ -18,7 +18,7 @@ from sklearn.decomposition import PCA
 
 
 st.set_page_config(layout="wide")
-st.markdown("<h1 style='color:#00BFFF;'>Generación de Insights.</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color:#00BFFF;'>Resultados.</h1>", unsafe_allow_html=True)
 st.divider()
 
 st.header("Análisis por modelo.")
@@ -90,6 +90,7 @@ for p in ax.patches:
 # Mostrar en Streamlit
 plt.tight_layout()
 st.pyplot(plt.gcf())
+st.divider
 
 #####################################################################################################
 st.header("Análisis de los clusters.")
