@@ -162,8 +162,8 @@ def features(data):
     data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
     return data 
 
-df = limpiar_datos(df)
 df = features(df)
+df = limpiar_datos(df)
 
 st.markdown('''
             Una vez fueron limpiados, implementamos nuevas features como:
@@ -228,17 +228,7 @@ plt.tight_layout()
 
 # Mostrar en Streamlit
 st.pyplot(fig)
-
-
-import plotly.express as px
-
-# Histograma de Income
-fig_income = px.histogram(df, x='Income', nbins=30, title='Distribución de Income')
-st.plotly_chart(fig_income, use_container_width=True)
-
-# Histograma de Age
-fig_age = px.histogram(df, x='Age', nbins=30, title='Distribución de Age')
-st.plotly_chart(fig_age, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
 
 st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
