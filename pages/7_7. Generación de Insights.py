@@ -236,7 +236,7 @@ plt.figure(figsize=(12, 6))
 sns.scatterplot(x='Income', y='MntMeatProducts', data=data, hue='clusters', palette='Set2')
 plt.title('Income vs Spent')
 plt.ylabel('Spent')
-st.pyplot(fig)
+st.pyplot(plt.gcf()) 
 
 mnt_cols = ['MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts','MntSweetProducts', 'MntGoldProds']
 
