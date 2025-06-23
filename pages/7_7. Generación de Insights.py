@@ -84,3 +84,66 @@ for p in ax.patches:
 # Mostrar en Streamlit
 plt.tight_layout()
 st.pyplot(plt.gcf())
+
+#####################################################################################################
+st.header("Análisis de los clusters.")
+st.write("Ahora haremos una análisis de los clústeres dados por K-Prototypes (con PCA):")
+
+# Cargar los datos
+data = pd.read_csv("Grupo 2 - Clientes Bancarios.csv", sep='\t', encoding='utf-8')
+data = data.dropna()
+data['Dt_Customer'] = pd.to_datetime(data['Dt_Customer'], format='%d-%m-%Y', errors='coerce')
+data = data.drop(columns=['Z_Revenue','Z_CostContact','ID'])
+data["Age"] = 2025 - data["Year_Birth"]
+data["Spent"] = data["MntWines"] + data["MntFruits"] + data["MntMeatProducts"] + data["MntFishProducts"] + data["MntSweetProducts"] + data["MntGoldProds"]
+data["Children"] = data["Kidhome"] + data["Teenhome"]
+data["Family_Size"] = data["Marital_Status"].replace({"Single": 1, "Married": 2, "Together": 2, "Divorced": 1, "Widow": 1}) + data["Children"]
+data['TotalAcceptedCmp'] = data[['AcceptedCmp1','AcceptedCmp2','AcceptedCmp3','AcceptedCmp4','AcceptedCmp5','Response']].sum(axis=1)
+data['NumTotalPurchases'] = data[['NumWebPurchases','NumCatalogPurchases','NumStorePurchases','NumDealsPurchases']].sum(axis=1)
+data['Customer_Tenure'] = 2025 - data['Dt_Customer'].dt.year
+data = data.drop(columns=['Dt_Customer','Year_Birth'])
+
+# Simplificar categorías
+data['Marital_Status'] = data['Marital_Status'].replace({
+    'Absurd': 'Single', 'YOLO': 'Single', 'Alone': 'Single', 'Divorced': 'Single', 'Widow': 'Single'
+})
+data['Education'] = data['Education'].replace({
+    'PhD': "Postgraduate", 'Graduation': "Graduate", '2n Cycle': "Postgraduate",
+    "Master": "Postgraduate", "Basic": "Undergraduate"
+})
+
+# Separar columnas categóricas y numéricas
+categorical_cols = data.select_dtypes(include=['object']).columns.tolist()
+binary_cols = [col for col in data.columns if data[col].nunique() == 2 and data[col].dtype in [int, float]]
+numerical_cols = [col for col in data.select_dtypes(include=['int64', 'float64']).columns if col not in binary_cols]
+
+# Escalar datos numéricos
+scaler = RobustScaler()
+numerical_scaled = scaler.fit_transform(data[numerical_cols])
+numerical_scaled_df = pd.DataFrame(numerical_scaled, columns=numerical_cols, index=data.index)
+
+# Aplicar PCA
+pca = PCA(n_components=6)
+numerical_pca = pca.fit_transform(numerical_scaled_df)
+pca_df = pd.DataFrame(numerical_pca, columns=[f'PC{i+1}' for i in range(6)], index=data.index)
+
+# Combinar con variables categóricas y binarias
+combined_data = pd.concat([pca_df, data[categorical_cols + binary_cols]], axis=1)
+dfMatrix = combined_data.to_numpy()
+catColumnsPos = [combined_data.columns.get_loc(col) for col in categorical_cols + binary_cols]
+
+# K-Prototypes con PCA
+kprototype = KPrototypes(n_jobs=-1, n_clusters=4, init='Huang', random_state=0)
+clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos)
+
+# Añadir clusters al DataFrame original
+data['clusters'] = clusters
+
+# Graficar distribución de clusters
+data['clusters'].value_counts().sort_index().plot(kind='bar', color='skyblue')
+plt.title('Distribución de Clusters')
+plt.xlabel('Cluster')
+plt.ylabel('Cantidad de Clientes')
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.show()
