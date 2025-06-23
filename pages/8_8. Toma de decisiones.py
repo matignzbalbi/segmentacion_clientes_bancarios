@@ -22,7 +22,7 @@ st.markdown("<h3><u>Segmento de Bajos Ingresos:</u></h3>", unsafe_allow_html=Tru
 st.markdown('''
 Productos:
 - Compra pequeñas cantidades de productos, con patrones de compra similares en todas las categorías.
-- Ligera preferencia por productos de oro y pescado.
+- Ligera preferencia por productos de oro.
 
 
 Compras:
@@ -33,7 +33,7 @@ Compras:
 
 Familia:
 - Perfil variado: casados, solteros o en pareja.
-- Generalmente tienen uno o más hijos.
+- Seguramente tienen uno o más hijos.
 
 
 Perfil:
@@ -70,7 +70,7 @@ Compras:
 
 Familia:
 - Perfil variado: casados, solteros o en pareja.
-- Generalmente tienen uno o más hijos.
+- Seguramente tienen uno o más hijos.
 
 
 Perfil:
@@ -96,8 +96,8 @@ st.markdown("<h3><u>Segmento de Ingresos Medios Plus:</u></h3>", unsafe_allow_ht
 st.markdown('''
 Productos:
 - Fuerte preferencia por pescado, frutas y dulces.
-- Compra en grandes cantidades, a pesar de ser un grupo reducido.
-- Consumo en otras categorías similar al segmento de ingresos medios, pero ligeramente superior.
+- Compra en grandes cantidades, igualando el promedio con los demas grupos, a pesar de ser un grupo reducido.
+- Consumo en otras categorías es superior al segmento de ingresos medios, pero es un grupo mas pequeño.
 
 
 Compras:
