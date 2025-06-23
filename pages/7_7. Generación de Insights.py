@@ -39,3 +39,36 @@ silueta_por_modelo = pd.DataFrame({
 })
 st.dataframe(silueta_por_modelo)
 
+
+df_silueta = pd.DataFrame(silueta_por_modelo)
+
+sns.set_style("whitegrid")
+plt.figure(figsize=(10, 6))
+colors = ["#3498db", "#2ecc71", "#f39c12", "#e74c3c"]
+
+ax = sns.barplot(
+    x="Modelo",
+    y="Coef_Silueta",
+    data=df_silueta.sort_values("Coef_Silueta", ascending=False),
+    palette=colors,
+    linewidth=1
+)
+plt.title("Comparación de Coeficientes de Silueta por Modelo", fontsize=14, pad=20, fontweight="bold")
+plt.xlabel("Modelo", fontsize=12, labelpad=10)
+plt.ylabel("Coeficiente de Silueta", fontsize=12, labelpad=10)
+plt.ylim(0, 0.6)
+
+# Añadir etiquetas de valor en las barras
+for p in ax.patches:
+    ax.annotate(
+        f"{p.get_height():.2f}",
+        (p.get_x() + p.get_width() / 2., p.get_height()),
+        ha="center", va="center",
+        xytext=(0, 10),
+        textcoords="offset points",
+        fontsize=10
+    )
+
+# Mostrar gráfico
+plt.tight_layout()
+plt.show()
