@@ -4,6 +4,27 @@ st.set_page_config(layout="wide")
 st.markdown("<h1 style='color:#00BFFF;'>Generación de Insights.</h1>", unsafe_allow_html=True)
 st.divider()
 
-st.header("Resultados.")
-st.write("En base a la evaluación vista en la solapa anterior vemos que no hay mucha diferencia entre los resultados de los modelos. Por esta razón, decidimos utilizar `K-Prototypes` con `PCA`, ya que en este modelo, estamos teniendo en cuenta todas las variables.")
-st.write("El resultado que obtuvimos fueron cuatro clusters, y podemos visualizarlos de esta manera:" )
+st.header("Análisis por modelo.")
+st.write("En base a la evaluación vista en la solapa anterior vemos que no hay mucha diferencia entre los resultados de los modelos. " \
+"Sin embargo, vemos que el modelo con mejor coeficiente de silueta es: `K-Prototype con PCA`. Por esta razón, es el modelo elegido para la creación de los clusters. Repasemos la comparación entre los coeficientes de silueta:")
+
+silueta_por_modelo = pd.DataFrame({
+    "Modelo": [
+        "K-Prototype",
+        "K-Prototype (PCA)",
+        "K-Means",
+        "K-Means (PCA)",
+        "Agglomerative",
+        "Agglomerative (PCA)"
+    ],
+    "Coef_Silueta": [
+        0.245368,
+        0.340683,
+        0.212936,
+        0.329097,
+        0.192293,
+        0.306680
+    ]
+})
+st.dataframe(silueta_por_modelo)
+
