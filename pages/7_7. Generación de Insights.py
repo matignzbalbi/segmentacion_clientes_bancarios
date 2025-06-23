@@ -216,218 +216,181 @@ clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos)
 # Añadir clusters al DataFrame original
 data['clusters'] = clusters
 
-# Crear figura
 sns.set_style("darkgrid")
+
+# 1. Distribución de Clusters
+st.subheader("Distribución de Clusters")
 fig, ax = plt.subplots()
-
-# Graficar distribución de clusters
 data['clusters'].value_counts().sort_index().plot(kind='bar', color='skyblue', ax=ax)
-
-# Personalizar gráfico
 ax.set_title('Distribución de Clusters')
 ax.set_xlabel('Cluster')
 ax.set_ylabel('Cantidad de Clientes')
 ax.set_xticklabels(ax.get_xticklabels(), rotation=0)
+st.pyplot(plt.gcf())
 
-# Mostrar en Streamlit
-st.pyplot(plt.gcf()) 
-
+# 2. Scatterplot: Income vs MntMeatProducts
+st.subheader("Relación entre Income y MntMeatProducts")
 plt.figure(figsize=(12, 6))
 sns.scatterplot(x='Income', y='MntMeatProducts', data=data, hue='clusters', palette='Set2')
 plt.title('Income vs Spent')
 plt.ylabel('Spent')
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 3. Scatterplots: Income vs MntProducts
+st.subheader("Relación entre Income y Gasto en Productos")
 mnt_cols = ['MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts','MntSweetProducts', 'MntGoldProds']
-
 fig, ax = plt.subplots(2, 3, figsize=(24, 12))
 for i, col in enumerate(mnt_cols):
     row = i // 3
     col_idx = i % 3
-    sns.scatterplot(x='Income', y=(data[col]), data=data, hue='clusters', palette='Set2',
-                    ax=ax[row, col_idx])
+    sns.scatterplot(x='Income', y=(data[col]), data=data, hue='clusters', palette='Set2', ax=ax[row, col_idx])
     ax[row, col_idx].set_title(f'Amount of {col.replace("Mnt", "")} (Original Scale)')
 plt.tight_layout()
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 4. Histogramas: Age
+st.subheader("Distribución de Edad por Cluster")
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
-
 for i in range(data['clusters'].nunique()):
     sns.histplot(data[data['clusters'] == i]['Age'], bins=30, kde=True, ax=axes[i], color=plt.cm.Set2(i))
     mean_Age = data[data['clusters'] == i]['Age'].mean()
-
     axes[i].axvline(mean_Age, color='black', linestyle='--', label=f'Media: {mean_Age:.2f}')
     axes[i].text(mean_Age + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_Age:.2f}', color='black', fontsize=12)
-
     axes[i].set_title(f'Distribución de Age para Cluster {i}')
-    axes[i].set_xlabel('Age')
-    axes[i].set_ylabel('Frecuencia')
-
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
-
 plt.tight_layout()
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 5. Histogramas: Income
+st.subheader("Distribución de Income por Cluster")
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
-
 for i in range(data['clusters'].nunique()):
     sns.histplot(data[data['clusters'] == i]['Income'], bins=30, kde=True, ax=axes[i], color=plt.cm.Set2(i))
     mean_Income = data[data['clusters'] == i]['Income'].mean()
-
     axes[i].axvline(mean_Income, color='black', linestyle='--', label=f'Media: {mean_Income:.2f}')
     axes[i].text(mean_Income + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_Income:.2f}', color='black', fontsize=12)
-
     axes[i].set_title(f'Distribución de Income para Cluster {i}')
-    axes[i].set_xlabel('Income')
-    axes[i].set_ylabel('Frecuencia')
-
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
-
 plt.tight_layout()
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 6. Histogramas: NumWebVisitsMonth
+st.subheader("Distribución de Visitas Web por Mes y Cluster")
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
-
 for i in range(data['clusters'].nunique()):
     sns.histplot(data[data['clusters'] == i]['NumWebVisitsMonth'], bins=30, kde=True, ax=axes[i], color=plt.cm.Set2(i))
     mean_NumWebVisitsMonth = data[data['clusters'] == i]['NumWebVisitsMonth'].mean()
-
     axes[i].axvline(mean_NumWebVisitsMonth, color='black', linestyle='--', label=f'Media: {mean_NumWebVisitsMonth:.2f}')
     axes[i].text(mean_NumWebVisitsMonth + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_NumWebVisitsMonth:.2f}', color='black', fontsize=12)
-
     axes[i].set_title(f'Distribución de NumWebVisitsMonth para Cluster {i}')
-    axes[i].set_xlabel('NumWebVisitsMonth')
-    axes[i].set_ylabel('Frecuencia')
-
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
-
 plt.tight_layout()
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 7. Marital Status
+st.subheader("Estado Civil por Cluster")
 marital_status_by_cluster = data.groupby('clusters')['Marital_Status'].value_counts(normalize=True).unstack().fillna(0)
-
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
-
 for i in range(data['clusters'].nunique()):
     cluster_data = marital_status_by_cluster.loc[i]
-
     cluster_data.plot(kind='bar', ax=axes[i], color=sns.color_palette('Set2', len(cluster_data.index)))
     axes[i].set_title(f'Distribución de Marital Status para Cluster {i}')
-    axes[i].set_xlabel('Marital Status')
-    axes[i].set_ylabel('Frecuencia Relativa')
     axes[i].tick_params(axis='x', rotation=45)
-
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
-
 plt.tight_layout()
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 8. Education
+st.subheader("Nivel Educativo por Cluster")
 education_by_cluster = data.groupby('clusters')['Education'].value_counts(normalize=True).unstack().fillna(0)
-
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
-
 for i in range(data['clusters'].nunique()):
     cluster_data = education_by_cluster.loc[i]
-
     cluster_data.plot(kind='bar', ax=axes[i], color=sns.color_palette('Set2', len(cluster_data.index)))
     axes[i].set_title(f'Distribución de Education para Cluster {i}')
-    axes[i].set_xlabel('Education')
-    axes[i].set_ylabel('Frecuencia Relativa')
     axes[i].tick_params(axis='x', rotation=45)
-
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
-
 plt.tight_layout()
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 9. Income Promedio
+st.subheader("Promedio de Income por Cluster")
 Income_by_cluster = data.groupby('clusters')['Income'].mean().reset_index()
-
 plt.figure(figsize=(8, 6))
 sns.barplot(x='clusters', y='Income', data=Income_by_cluster, palette='Set2')
-plt.title('Income por Cluster', fontsize=14)
-plt.xlabel('Cluster', fontsize=12)
-plt.ylabel('Income', fontsize=12)
-
+plt.title('Income por Cluster')
 ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 10. NumWebVisitsMonth Promedio
+st.subheader("Promedio de Visitas Web por Mes y Cluster")
 NumWebVisitsMonth_by_cluster = data.groupby('clusters')['NumWebVisitsMonth'].mean().reset_index()
-
 plt.figure(figsize=(8, 6))
 sns.barplot(x='clusters', y='NumWebVisitsMonth', data=NumWebVisitsMonth_by_cluster, palette='Set2')
-plt.title('NumWebVisitsMonth por Cluster', fontsize=14)
-plt.xlabel('Cluster', fontsize=12)
-plt.ylabel('NumWebVisitsMonth', fontsize=12)
-
+plt.title('NumWebVisitsMonth por Cluster')
 ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 11. Recency Promedio
+st.subheader("Recency Promedio por Cluster")
 Recency_by_cluster = data.groupby('clusters')['Recency'].mean().reset_index()
-
 plt.figure(figsize=(8, 6))
 sns.barplot(x='clusters', y='Recency', data=Recency_by_cluster, palette='Set2')
-plt.title('Recency por Cluster', fontsize=14)
-plt.xlabel('Cluster', fontsize=12)
-plt.ylabel('Recency', fontsize=12)
-
+plt.title('Recency por Cluster')
 ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 12. TotalAcceptedCmp Promedio
+st.subheader("Promedio de TotalAcceptedCmp por Cluster")
 TotalAcceptedCmp_by_cluster = data.groupby('clusters')['TotalAcceptedCmp'].mean().reset_index()
-
 plt.figure(figsize=(8, 6))
 sns.barplot(x='clusters', y='TotalAcceptedCmp', data=TotalAcceptedCmp_by_cluster, palette='Set2')
-plt.title('TotalAcceptedCmp por Cluster', fontsize=14)
-plt.xlabel('Cluster', fontsize=12)
-plt.ylabel('TotalAcceptedCmp', fontsize=12)
-
+plt.title('TotalAcceptedCmp por Cluster')
 ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 13. Age Promedio
+st.subheader("Promedio de Edad por Cluster")
 Age_by_cluster = data.groupby('clusters')['Age'].mean().reset_index()
-
 plt.figure(figsize=(8, 6))
 sns.barplot(x='clusters', y='Age', data=Age_by_cluster, palette='Set2')
-plt.title('Age por Cluster', fontsize=14)
-plt.xlabel('Cluster', fontsize=12)
-plt.ylabel('Age', fontsize=12)
-
+plt.title('Age por Cluster')
 ax = plt.gca()
 for p in ax.patches:
     ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
                 ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf()) 
+st.pyplot(plt.gcf())
 
+# 14. Promedios Numéricos por Cluster
+st.subheader("Promedios de Variables Numéricas por Cluster")
 numeric_cols = data.select_dtypes(include=np.number).columns.tolist()
-
 cluster_avg = data.groupby('clusters')[numeric_cols].mean()
-
 for col in numeric_cols:
     plt.figure(figsize=(8, 6))
     sns.barplot(x=cluster_avg.index, y=cluster_avg[col], palette='viridis')
-    plt.title(f'Promedio de {col} por Cluster', fontsize=14)
-    plt.xlabel('Cluster', fontsize=12)
-    plt.ylabel(f'Promedio de {col}', fontsize=12)
-    st.pyplot(plt.gcf()) 
+    plt.title(f'Promedio de {col} por Cluster')
+    plt.xlabel('Cluster')
+    plt.ylabel(f'Promedio de {col}')
+    st.pyplot(plt.gcf())
