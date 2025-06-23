@@ -216,8 +216,6 @@ clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos)
 
 # Añadir clusters al DataFrame original
 data['clusters'] = clusters
-prueba = pd.DataFrame(data['clusters'].value_counts())
-st.dataframe(prueba)
 
 # Estilo de fondo negro y configuración general
 sns.set_style("darkgrid")
