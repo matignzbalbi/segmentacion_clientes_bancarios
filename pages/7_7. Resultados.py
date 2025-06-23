@@ -409,6 +409,7 @@ st.pyplot(plt.gcf())
 # 14. Promedios Numéricos por Cluster
 st.subheader("Promedios de las distintas variables numéricas por Cluster")
 numeric_cols = data.select_dtypes(include=np.number).columns.tolist()
+numeric_cols.remove('clusters')  # Elimina 'clusters' de la lista si está presente
 cluster_avg = data.groupby('clusters')[numeric_cols].mean()
 for col in numeric_cols:
     plt.figure(figsize=(8, 6))
