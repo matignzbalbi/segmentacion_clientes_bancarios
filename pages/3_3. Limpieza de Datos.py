@@ -228,7 +228,6 @@ plt.tight_layout()
 
 # Mostrar en Streamlit
 st.pyplot(fig)
-st.plotly_chart(fig, use_container_width=True)
 
 
 st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
