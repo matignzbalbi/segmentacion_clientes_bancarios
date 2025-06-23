@@ -139,6 +139,56 @@ data['Education'] = data['Education'].replace({
     "Master": "Postgraduate", "Basic": "Undergraduate"
 })
 
+#Nos quedamos con los clientes que tengan un salario < 120000
+data = data[data['Income']<120000]
+
+#Nos quedamos con los clientes que tengan < 90
+data = data[data['Age']<90]
+
+from sklearn.neighbors import LocalOutlierFactor
+from sklearn.preprocessing import StandardScaler
+from scipy import stats
+
+num_vars = data.select_dtypes(include=np.number).columns.tolist()
+
+iqr_flags = pd.DataFrame(index=data.index)
+
+for col in num_vars:
+    Q1 = data[col].quantile(0.25)
+    Q3 = data[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower = Q1 - 1.5 * IQR
+    upper = Q3 + 1.5 * IQR
+    iqr_flags[col] = (data[col] < lower) | (data[col] > upper)
+
+data['is_outlier_IQR'] = iqr_flags.any(axis=1)
+
+z_scores = np.abs(stats.zscore(data[num_vars]))
+data['is_outlier_Z'] = (z_scores > 3).any(axis=1)
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(data[num_vars])
+lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
+data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
+
+
+
+print("Outliers por IQR:", data['is_outlier_IQR'].sum())
+print("Outliers por Z-score:", data['is_outlier_Z'].sum())
+print("Outliers por LOF:", data['is_outlier_LOF'].sum())
+data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
+print("Outliers detectados por los 3 métodos:", data['outlier_todos'].sum())
+
+def replace_confirmed_outliers_with_median(df, column):
+    median = df[column].median()
+    df.loc[df['outlier_todos'], column] = df.loc[df['outlier_todos'], column].apply(lambda x: median)
+    return df
+
+for col in num_vars:
+    data = replace_confirmed_outliers_with_median(data, col)
+
+data = data.drop(columns=["is_outlier_LOF", "outlier_todos", "is_outlier_IQR", "is_outlier_Z"])
+
 # Separar columnas categóricas y numéricas
 categorical_cols = data.select_dtypes(include=['object']).columns.tolist()
 binary_cols = [col for col in data.columns if data[col].nunique() == 2 and data[col].dtype in [int, float]]
