@@ -1,4 +1,15 @@
+import pandas as pd
 import streamlit as st
+import numpy as np
+from utils import cargar_datos
+from utils import limpiar_datos
+from utils import features
+from sklearn.neighbors import LocalOutlierFactor
+from sklearn.preprocessing import StandardScaler
+from scipy import stats
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
 
 st.set_page_config(layout="wide")
 st.markdown("<h1 style='color:#00BFFF;'>Generación de Insights.</h1>", unsafe_allow_html=True)
