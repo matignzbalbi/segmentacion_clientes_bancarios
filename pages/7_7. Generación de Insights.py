@@ -173,4 +173,6 @@ plt.xlabel('Cluster')
 plt.ylabel('Cantidad de Clientes')
 plt.xticks(rotation=0)
 plt.tight_layout()
-plt.show()
+
+# Mostrar en Streamlit
+st.pyplot(plt.gcf())
