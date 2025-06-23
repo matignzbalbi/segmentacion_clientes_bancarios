@@ -167,6 +167,7 @@ clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos)
 data['clusters'] = clusters
 
 # Crear figura
+sns.set_style("darkgrid")
 fig, ax = plt.subplots()
 
 # Graficar distribución de clusters
