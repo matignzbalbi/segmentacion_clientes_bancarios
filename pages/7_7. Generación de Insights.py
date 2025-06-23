@@ -10,6 +10,12 @@ from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
+import pandas as pd
+import matplotlib.pyplot as plt
+from kmodes.kprototypes import KPrototypes
+from sklearn.preprocessing import RobustScaler
+from sklearn.decomposition import PCA
+
 
 st.set_page_config(layout="wide")
 st.markdown("<h1 style='color:#00BFFF;'>Generación de Insights.</h1>", unsafe_allow_html=True)
@@ -88,6 +94,7 @@ st.pyplot(plt.gcf())
 #####################################################################################################
 st.header("Análisis de los clusters.")
 st.write("Ahora haremos una análisis de los clústeres dados por K-Prototypes (con PCA):")
+
 
 # Cargar los datos
 data = pd.read_csv("Grupo 2 - Clientes Bancarios.csv", sep='\t', encoding='utf-8')
