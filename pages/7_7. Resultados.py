@@ -278,8 +278,8 @@ axes = axes.flatten()
 for i in range(data['clusters'].nunique()):
     sns.histplot(data[data['clusters'] == i]['Age'], bins=30, kde=True, ax=axes[i], color=plt.cm.Set2(i))
     mean_Age = data[data['clusters'] == i]['Age'].mean()
-    axes[i].axvline(mean_Age, color='black', linestyle='--', label=f'Media: {mean_Age:.2f}')
-    axes[i].text(mean_Age + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_Age:.2f}', color='black', fontsize=12)
+    axes[i].axvline(mean_Age, color='white', linestyle='--', label=f'Media: {mean_Age:.2f}')
+    axes[i].text(mean_Age + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_Age:.2f}', color='white', fontsize=12)
     axes[i].set_title(f'Distribución de Age para Cluster {i}')
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
@@ -293,8 +293,8 @@ axes = axes.flatten()
 for i in range(data['clusters'].nunique()):
     sns.histplot(data[data['clusters'] == i]['Income'], bins=30, kde=True, ax=axes[i], color=plt.cm.Set2(i))
     mean_Income = data[data['clusters'] == i]['Income'].mean()
-    axes[i].axvline(mean_Income, color='black', linestyle='--', label=f'Media: {mean_Income:.2f}')
-    axes[i].text(mean_Income + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_Income:.2f}', color='black', fontsize=12)
+    axes[i].axvline(mean_Income, color='white', linestyle='--', label=f'Media: {mean_Income:.2f}')
+    axes[i].text(mean_Income + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_Income:.2f}', color='white', fontsize=12)
     axes[i].set_title(f'Distribución de Income para Cluster {i}')
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
@@ -308,8 +308,8 @@ axes = axes.flatten()
 for i in range(data['clusters'].nunique()):
     sns.histplot(data[data['clusters'] == i]['NumWebVisitsMonth'], bins=30, kde=True, ax=axes[i], color=plt.cm.Set2(i))
     mean_NumWebVisitsMonth = data[data['clusters'] == i]['NumWebVisitsMonth'].mean()
-    axes[i].axvline(mean_NumWebVisitsMonth, color='black', linestyle='--', label=f'Media: {mean_NumWebVisitsMonth:.2f}')
-    axes[i].text(mean_NumWebVisitsMonth + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_NumWebVisitsMonth:.2f}', color='black', fontsize=12)
+    axes[i].axvline(mean_NumWebVisitsMonth, color='white', linestyle='--', label=f'Media: {mean_NumWebVisitsMonth:.2f}')
+    axes[i].text(mean_NumWebVisitsMonth + 0.1, axes[i].get_ylim()[1]*0.8, f'{mean_NumWebVisitsMonth:.2f}', color='white', fontsize=12)
     axes[i].set_title(f'Distribución de NumWebVisitsMonth para Cluster {i}')
 for j in range(data['clusters'].nunique(), len(axes)):
     fig.delaxes(axes[j])
