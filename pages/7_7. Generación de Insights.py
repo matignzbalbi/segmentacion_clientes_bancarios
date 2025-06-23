@@ -216,7 +216,29 @@ clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos)
 # Añadir clusters al DataFrame original
 data['clusters'] = clusters
 
+# Estilo de fondo negro y configuración general
 sns.set_style("darkgrid")
+plt.rcParams['axes.facecolor'] = 'black'
+plt.rcParams['figure.facecolor'] = 'black'
+plt.rcParams['axes.labelcolor'] = 'white'
+plt.rcParams['xtick.color'] = 'white'
+plt.rcParams['ytick.color'] = 'white'
+plt.rcParams['text.color'] = 'white'
+plt.rcParams['axes.edgecolor'] = 'white'
+
+# Función para aplicar estilo consistente
+
+def aplicar_estilo(ax, title=None, xlabel=None, ylabel=None, rotate_xticks=False):
+    if title:
+        ax.set_title(title, fontsize=14, color='white')
+    if xlabel:
+        ax.set_xlabel(xlabel, fontsize=12, color='white')
+    if ylabel:
+        ax.set_ylabel(ylabel, fontsize=12, color='white')
+    if rotate_xticks:
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right', color='white')
+    ax.tick_params(colors='white')
+    ax.set_facecolor('black')
 
 # 1. Distribución de Clusters
 st.subheader("Distribución de Clusters")
@@ -228,16 +250,16 @@ ax.set_ylabel('Cantidad de Clientes')
 ax.set_xticklabels(ax.get_xticklabels(), rotation=0)
 st.pyplot(plt.gcf())
 
-# 2. Scatterplot: Income vs MntMeatProducts
-st.subheader("Relación entre Income y MntMeatProducts")
+# 2. Scatterplot: Income vs Spent
+st.subheader("Relación entre Income y Spent por Cluster")
 plt.figure(figsize=(12, 6))
 sns.scatterplot(x='Income', y='MntMeatProducts', data=data, hue='clusters', palette='Set2')
 plt.title('Income vs Spent')
 plt.ylabel('Spent')
 st.pyplot(plt.gcf())
 
-# 3. Scatterplots: Income vs MntProducts
-st.subheader("Relación entre Income y Gasto en Productos")
+# 3. Scatterplots: Income vs los gastos en los distintos tipos de categorías.
+st.subheader("Relación entre Income y los gastos en los distintos tipos de categorías.")
 mnt_cols = ['MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts','MntSweetProducts', 'MntGoldProds']
 fig, ax = plt.subplots(2, 3, figsize=(24, 12))
 for i, col in enumerate(mnt_cols):
@@ -279,7 +301,7 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 
 # 6. Histogramas: NumWebVisitsMonth
-st.subheader("Distribución de Visitas Web por Mes y Cluster")
+st.subheader("Distribución de NumWebVisitsMonth por Cluster")
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 axes = axes.flatten()
 for i in range(data['clusters'].nunique()):
@@ -336,7 +358,7 @@ for p in ax.patches:
 st.pyplot(plt.gcf())
 
 # 10. NumWebVisitsMonth Promedio
-st.subheader("Promedio de Visitas Web por Mes y Cluster")
+st.subheader("Promedio de NumWebVisitsMonth por Cluster")
 NumWebVisitsMonth_by_cluster = data.groupby('clusters')['NumWebVisitsMonth'].mean().reset_index()
 plt.figure(figsize=(8, 6))
 sns.barplot(x='clusters', y='NumWebVisitsMonth', data=NumWebVisitsMonth_by_cluster, palette='Set2')
@@ -384,7 +406,7 @@ for p in ax.patches:
 st.pyplot(plt.gcf())
 
 # 14. Promedios Numéricos por Cluster
-st.subheader("Promedios de Variables Numéricas por Cluster")
+st.subheader("Promedios de las distintas variables numéricas por Cluster")
 numeric_cols = data.select_dtypes(include=np.number).columns.tolist()
 cluster_avg = data.groupby('clusters')[numeric_cols].mean()
 for col in numeric_cols:
