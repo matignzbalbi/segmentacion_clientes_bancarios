@@ -166,13 +166,17 @@ clusters = kprototype.fit_predict(dfMatrix, categorical=catColumnsPos)
 # Añadir clusters al DataFrame original
 data['clusters'] = clusters
 
+# Crear figura
+fig, ax = plt.subplots()
+
 # Graficar distribución de clusters
-data['clusters'].value_counts().sort_index().plot(kind='bar', color='skyblue')
-plt.title('Distribución de Clusters')
-plt.xlabel('Cluster')
-plt.ylabel('Cantidad de Clientes')
-plt.xticks(rotation=0)
-plt.tight_layout()
+data['clusters'].value_counts().sort_index().plot(kind='bar', color='skyblue', ax=ax)
+
+# Personalizar gráfico
+ax.set_title('Distribución de Clusters')
+ax.set_xlabel('Cluster')
+ax.set_ylabel('Cantidad de Clientes')
+ax.set_xticklabels(ax.get_xticklabels(), rotation=0)
 
 # Mostrar en Streamlit
-st.pyplot(plt.gcf())
+st.pyplot(fig)
