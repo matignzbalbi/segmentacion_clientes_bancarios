@@ -3,7 +3,6 @@ import streamlit as st
 import numpy as np
 from utils import cargar_datos
 from utils import limpiar_datos
-from utils import features
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.preprocessing import StandardScaler
 from scipy import stats
@@ -16,20 +15,12 @@ st.set_page_config(layout="wide")
 
 df = cargar_datos()
 
-st.title("Análisis Exploratorio de Datos.")
+st.markdown("<h1 style='color:#00BFFF;'>Análisis Exploratorio de Datos.</h1>", unsafe_allow_html=True)
 st.divider()
 
 st.header("Nulos y duplicados.")
 st.subheader("Nulos.")
 st.write("Analizaremos si nuestra base de datos cuenta con valores nulos y/o con valores duplicados.")
-codigo = '''def dataframe_info(data):
-    info = pd.DataFrame({
-        "Columnas": df.columns,
-        "Valores nulos": df.isnull().sum(),
-        "% de nulos": round(df.isnull().mean() * 100, 2)
-    })
-    return info'''
-st.code(codigo) 
 def dataframe_info(df):
     info = pd.DataFrame({
         "Columnas": df.columns,
@@ -145,6 +136,32 @@ with col2:
 st.divider()
 
 st.subheader("Creación de nuevas variables.")
+
+def features(data):
+    #Edad actual
+    data["Age"] = 2021-data["Year_Birth"]
+
+    #Gasto total en diversos items
+    data["Spent"] = data["MntWines"]+ data["MntFruits"]+ data["MntMeatProducts"]+ data["MntFishProducts"]+ data["MntSweetProducts"]+ data["MntGoldProds"]
+
+    #Total de menores
+    data["Children"]=data["Kidhome"]+data["Teenhome"]
+
+    #Miembros totales de la familia
+    data["Family_Size"] = data["Marital_Status"].replace({"Single": 1, "Married":2, "Together":2})+ data["Children"]
+
+    #Campañas totales aceptadas
+    data['TotalAcceptedCmp'] = data['AcceptedCmp1'] + data['AcceptedCmp2'] + data['AcceptedCmp3'] + data['AcceptedCmp4'] + data['AcceptedCmp5'] + data['Response']
+
+    #Compras totales
+    data['NumTotalPurchases'] = data['NumWebPurchases'] + data['NumCatalogPurchases'] + data['NumStorePurchases'] + data['NumDealsPurchases']
+
+    #Años pertenecientes del cliente desde que se agrego a la base de datos
+    data['Customer_Tenure'] = 2021 - data['Dt_Customer'].dt.year
+    
+    data = data.drop(columns=['Dt_Customer','Year_Birth'], axis=1)
+    return data 
+
 df = limpiar_datos(df)
 df = features(df)
 
@@ -193,24 +210,6 @@ plt.show()'''
 st.code(codigo)
 
 st.write("Luego creamos dos histogramas con las variables que nosotros creemos podríamos identificar los outliers a simple vista: `Income` y `Age`")
-codigo = '''fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-# Histograma para Income
-sns.histplot(data['Income'], bins=30, kde=True, ax=axes[0])
-axes[0].set_title('Distribución de Income')
-axes[0].set_xlabel('Income')
-axes[0].set_ylabel('Frecuencia')
-
-# Histograma para Age
-sns.histplot(data['Age'], bins=30, kde=True, ax=axes[1])
-axes[1].set_title('Distribución de Age')
-axes[1].set_xlabel('Age')
-axes[1].set_ylabel('Frecuencia')
-
-plt.tight_layout()
-plt.show()'''
-st.code(codigo)
-
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
 # Histograma para Income
@@ -228,7 +227,8 @@ axes[1].set_ylabel('Frecuencia',color='white')
 plt.tight_layout()
 
 # Mostrar en Streamlit
-st.plotly_chart(fig, use_container_width=True)
+st.pyplot(fig)
+
 
 st.write("Al ver que notoriamente podemos identificar los outiers, decidimos eliminarlos.")
 codigo = '''#Nos quedamos con los clientes que tengan un salario < 120000
@@ -289,41 +289,23 @@ X_scaled = scaler.fit_transform(data[num_vars])
 lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
 data['is_outlier_LOF'] = lof.fit_predict(X_scaled) == -1
 
-st.write("Observamos la cantidad de Outliers identificados por IQR:")
-codigo = '''print("Outliers por IQR:", data['is_outlier_IQR'].sum())'''
-st.code(codigo)
-st.write("Outliers por IQR:", data['is_outlier_IQR'].sum())
+st.write("Analizamos cuantos outliers detecta cada método y cuantos outliers son detectados por los TRES métodosal mismo tiempo.")
+# Calcular las cantidades
+outliers_iqr = data['is_outlier_IQR'].sum()
+outliers_z = data['is_outlier_Z'].sum()
+outliers_lof = data['is_outlier_LOF'].sum()
+outliers_all = (
+    data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
+).sum()
 
-st.write("Observamos la cantidad de Outliers identificados por Z-score:")
-codigo = '''print("Outliers por Z-score:", data['is_outlier_Z'].sum())'''
-st.code(codigo)
-st.write("Outliers por Z-score:", data['is_outlier_Z'].sum())
+# Crear tabla comparativa
+outlier_summary = pd.DataFrame({
+    'Método': ['IQR', 'Z-Score', 'LOF', 'Los tres métodos (intersección)'],
+    'Cantidad de outliers': [outliers_iqr, outliers_z, outliers_lof, outliers_all]
+})
 
-st.write("Observamos la cantidad de Outliers identificados por LOF:")
-codigo = '''print("Outliers por LOF:", data['is_outlier_LOF'].sum())'''
-st.code(codigo)
-st.write("Outliers por LOF:", data['is_outlier_LOF'].sum())
+# Mostrar la tabla
+st.dataframe(outlier_summary)
 
-
-st.write("Observamos la cantidad de Outliers identificados por los TRES métodos:")
-codigo = '''data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
-print("Outliers detectados por los 3 métodos:", data['outlier_todos'].sum())'''
-st.code(codigo)
-data['outlier_todos'] = data['is_outlier_IQR'] & data['is_outlier_Z'] & data['is_outlier_LOF']
-st.write("Outliers presentes en los tres métodos:", data['outlier_todos'].sum())
 
 st.write("Debido al tamaño de nuestro dataset, considerando que es un dataset chico, decidimos imputar los Outliers con la mediana, en lugar de eliminarlos.")
-codigo = '''def replace_outliers_with_median(df, column):
-    Q1 = df[column].quantile(0.25)
-    Q3 = df[column].quantile(0.75)
-    IQR = Q3 - Q1
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-    median = df[column].median()
-
-    df[column] = df[column].apply(lambda x: median if x < lower_bound or x > upper_bound else x)
-    return df
-
-for col in num_cols:
-    data = replace_outliers_with_median(data, col)'''
-st.code(codigo)

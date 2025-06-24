@@ -6,7 +6,7 @@ from sklearn.decomposition import PCA
 st.set_page_config(layout="wide")
 df = cargar_datos()
 
-st.title("Modelamiento.")
+st.markdown("<h1 style='color:#00BFFF;'>Modelamiento.</h1>", unsafe_allow_html=True)
 st.divider()
 
 st.header("Introducción al Modelado.")
@@ -78,6 +78,12 @@ En cuanto al método de enlace, el que mejor resultado nos proporcionó fue ``wa
     with c2:
         st.markdown(proceso)
 
+st.write('''Dado que el objetivo central del proyecto prioriza la interpretabilidad de los resultados y la obtención de segmentos bien definidos para apoyar estrategias de negocio, se decidió no emplear los algoritmos DBSCAN ni GMM. 
+
+Por un lado, DBSCAN presenta limitaciones para trabajar eficazmente con datos mixtos (categóricos y numéricos), no brinda control explícito sobre la cantidad de clústeres a obtener, y funciona mejor cuando los datos presentan separaciones naturales y bien definidas por espacios vacíos en el conjunto, una condición que no aplica al presente análisis.
+
+Por otro lado, GMM no resulta adecuado en este contexto dado que la distribución de algunas variables numéricas no sigue un patrón gaussiano, sumado a la necesidad de procesar variables categóricas, lo que aumenta aun mas la complejidad y el coste computacional que demanda este modelo. Ofrece una interpretación más compleja, ya que un punto de datos puede pertenecer parcialmente a varios clusters. Aunque esto proporciona mayor flexibilidad, puede complicar la interpretación y la explicación de los resultados.''')    
+    
     
     
     
