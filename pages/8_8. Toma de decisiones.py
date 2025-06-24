@@ -103,7 +103,7 @@ with col2:
     """)
 
 with col3:
-    st.subheader("Notas y Estrategias")
+    st.subheader("Estrategia clave:")
     st.markdown("""
     - Optimizar el catálogo digital.
     - Envíos gratis y promociones por volumen.
