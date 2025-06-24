@@ -228,7 +228,7 @@ with st.expander("Boxplots de variables numéricas"):
 
     # Crear un boxplot para cada variable
     for i, col in enumerate(non_binary_columns):
-        data.boxplot(column=col, ax=axes[i])
+        df.boxplot(column=col, ax=axes[i])
         axes[i].set_title(f'Boxplot de {col}')
 
     # Eliminar ejes vacíos
