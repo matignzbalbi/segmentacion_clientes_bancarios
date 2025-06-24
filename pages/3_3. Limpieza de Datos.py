@@ -212,7 +212,7 @@ st.code(codigo)
 
 with st.expander("Boxplots de variables numéricas"):
     # Filtrar solo columnas numéricas
-    numeric_df = data.select_dtypes(include=np.number)
+    numeric_df = df.select_dtypes(include=np.number)
 
     # Excluir columnas binarias
     non_binary_columns = [col for col in numeric_df.columns if numeric_df[col].nunique() > 2]
