@@ -72,8 +72,9 @@ Notas:
 Estrategias:
 - Mejorar la visibilidad de las ofertas en la web y personalizarlas según los intereses del cliente.
 - Incrementar la variedad de productos y marcas disponibles.
-- Experimentar con descuentos en nuevas categorías para estimular el consumo.
+- Experimentar con descuentos en nuevas categorías para estimular el consumo, por ejemplo en packs de vinos mezclados con otro tipo de producto.
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
+- Ofrecer beneficios como envíos gratuitos.
 ''')
 st.divider()
 st.markdown("<h3><u>Segmento Oro (Ingresos Medios Altos):</u></h3>", unsafe_allow_html=True)
@@ -83,7 +84,7 @@ Compras:
 - Fuerte preferencia por pescado, frutas y dulces.
 - Compra en grandes cantidades, igualando el promedio con los demas grupos, a pesar de ser un grupo reducido.
 - Consumo en otras categorías es superior al segmento de ingresos medios, pero es un grupo mas pequeño.
-- Comprador activo en la web, aunque con menos visitas frecuentes.
+- Comprador activo en la web y en la tienda, aunque con menos visitas frecuentes en la página.
 - Prefiere adquirir productos a través del catálogo en lugar de buscar ofertas.
 - Compra en grandes cantidades, priorizando la conveniencia sobre los descuentos.
 
@@ -112,7 +113,7 @@ st.markdown('''
 Compras:
 - Preferencia por vinos y carne.
 - Compra cantidades moderadamente superiores a la media.
-- Comprador activo en la web, aunque con visitas menos frecuentes.
+- Comprador activo tanto la web como en la tienda, aunque con visitas menos frecuentes.
 - Prefiere el catálogo sobre las ofertas y realiza compras planificadas.
 - Adquiere cantidades moderadas de productos, sin depender de promociones.
 
@@ -122,7 +123,7 @@ Perfil:
 - Mayoría de graduados y posgraduados.
 - Mayoría entre 60 y 70 años.
 - Grupo longevo que compra cantidades ligeramente superiores a lo estandar.
-- Mayor aceptación de campañas promocionales en comparación con otros segmentos, especialmente las más recientes.
+- Mayor aceptación de campañas promocionales en comparación con otros segmentos.
 
 Notas:
 - Este cliente parece tener preferencias definidas y realiza compras planificadas, mostrando poca atención a las ofertas.
