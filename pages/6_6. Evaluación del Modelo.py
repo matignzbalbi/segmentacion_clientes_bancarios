@@ -403,7 +403,7 @@ predict_AC = AC.fit_predict(PCA_ds)
 silueta_agglomerative = silhouette_score(PCA_ds, predict_AC)
 print(silueta_agglomerative)'''
 st.code(codigo)
-st.write("Utilizamos 4 clusters, ya que debido al grafico del silhouette score y el de elbow method nos parecia la cantidad indicada")
+st.write("Utilizamos 4 clusters, ya que debido al gráfico del silhouette score y el de elbow method nos parecía la cantidad indicada.")
 st.info("0.30667962662354253")
 
 codigo = '''PCA_ds["Cluster"] = predict_AC

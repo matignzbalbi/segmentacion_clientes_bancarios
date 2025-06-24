@@ -214,7 +214,7 @@ else:
         y=filtered_corr.index
     )
     fig.update_layout(
-        title="Matriz de Correlación Filtrada (|r| ≤ 0.75)",
+        title="Matriz de Correlación Filtrada (|r| ≤ 0.70)",
         width=800,
         height=800,
         xaxis_showgrid=False,
