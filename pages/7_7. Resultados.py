@@ -418,3 +418,8 @@ for col in numeric_cols:
     plt.xlabel('Cluster')
     plt.ylabel(f'Promedio de {col}')
     st.pyplot(plt.gcf())
+
+st.divider()
+st.subheader("Análisis de los gráficos.")
+st.write("Todos estos gráficos fueron utilizados para sacar conclusiones y ayudar a la toma de decisiones que veremos en la última sección.")
+st.divider()
