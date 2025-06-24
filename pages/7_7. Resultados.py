@@ -352,7 +352,7 @@ numeric_cols = data.select_dtypes(include=np.number).columns.tolist()
 numeric_cols.remove('clusters')  # Elimina 'clusters' de la lista si está presente
 cluster_avg = data.groupby('clusters')[numeric_cols].mean()
 for col in numeric_cols:
-    st.subheader(f"Promedio de ({col}) por Cluster")
+    st.subheader(f"Promedio de {col} por Cluster")
     plt.figure(figsize=(8, 6))
     sns.barplot(x=cluster_avg.index, y=cluster_avg[col], palette='Set2')
     plt.title(f'Promedio de {col} por Cluster')
