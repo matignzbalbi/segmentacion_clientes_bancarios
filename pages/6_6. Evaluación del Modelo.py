@@ -313,12 +313,7 @@ predict_AC = AC.fit_predict(PCA_ds)
 
 silueta_agglomerative = silhouette_score(PCA_ds, predict_AC)
 print(silueta_agglomerative)'''
-<<<<<<< HEAD
-st.code(codigo)
-st.write("Utilizamos 4 clusters, ya que debido al gráfico del silhouette score y el de elbow method nos parecía la cantidad indicada.")
-st.info("0.30667962662354253")
-=======
->>>>>>> da09716bbc1f93a9ecdc6076727d991e3ded7e6f
+
 
 
 with st.expander("Ejecución Agglomerative con PCA", expanded=True):
