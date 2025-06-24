@@ -18,7 +18,7 @@ st.markdown('''
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
 st.divider()
-st.markdown("<h3><u>Segmento Bronce(Ingresos Bajos):</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento Bronce (Ingresos Bajos):</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 
 Compras:
@@ -106,7 +106,7 @@ Estrategias:
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
 - Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
 st.divider()
-st.markdown("<h3><u>Segmento Platino (Altos Ingresos):</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento Platino (Ingresos Altos):</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 
 Compras:
