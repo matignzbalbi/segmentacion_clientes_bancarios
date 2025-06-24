@@ -9,7 +9,7 @@ st.divider()
 st.markdown('''
         Debido a las carácteristicas de los clústers generados por KPrototypes proponemos los\
         siguientes perfiles para cada uno de ellos:
-        * `Cluster 1`: **SSegmento Bronce (Ingresos Bajos)**.
+        * `Cluster 1`: **Segmento Bronce (Ingresos Bajos)**.
         * `Cluster 2`: **Segmento Plata (Ingresos Medios)**.
         * `Cluster 3`: **Segmento Oro (Ingresos Medios Altos)**.
         * `Cluster 4`: **Segmento Platino (Ingresos Altos)**.
