@@ -18,7 +18,7 @@ st.markdown('''
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
 st.divider()
-st.markdown("<h3><u>Segmento de Bajos Ingresos:</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento Bronce(Ingresos Bajos):</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 
 Compras:
@@ -47,7 +47,7 @@ Estrategias:
 - Asegurar que estén informados sobre ofertas a través de campañas de email marketing y newsletters.''')
 
 st.divider()
-st.markdown("<h3><u>Segmento de Ingresos Medios:</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento Plata (Ingresos Medios):</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 
 Compras:
@@ -76,7 +76,7 @@ Estrategias:
 - Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
 ''')
 st.divider()
-st.markdown("<h3><u>Segmento de Ingresos Medios Plus:</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento Oro (Ingresos Medios Altos):</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 
 Compras:
@@ -106,7 +106,7 @@ Estrategias:
 - Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
 - Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
 st.divider()
-st.markdown("<h3><u>Segmento de Altos Ingresos:</u></h3>", unsafe_allow_html=True)
+st.markdown("<h3><u>Segmento Platino (Altos Ingresos):</u></h3>", unsafe_allow_html=True)
 st.markdown('''
 
 Compras:
