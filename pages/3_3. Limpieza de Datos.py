@@ -180,7 +180,7 @@ st.dataframe(df.head(5))
 st.divider()
 
 st.subheader("Tratamiento de Outliers.")
-st.write("Como primer paso, creamos un boxplot para cada una de las variables para tener un paneo general de los outliers. (No fueron graficados en Streamlit por obvias razones pero pueden verse en el código.)")
+st.write("Como primer paso, creamos un boxplot para cada una de las variables para tener un paneo general de los outliers.")
 codigo = '''# Filtrar solo columnas numéricas
 numeric_df = data.select_dtypes(include=np.number)
 
