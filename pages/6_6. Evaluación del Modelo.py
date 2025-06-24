@@ -23,11 +23,12 @@ df = cargar_datos()
 
 st.markdown("<h1 style='color:#00BFFF;'>Evaluación del Modelo.</h1>", unsafe_allow_html=True)
 st.divider()
-st.write("""Como se detallo en 4. Modelamiento, se realizaron 3 modelos donde cada uno incluyé **PCA** y el otro no para 
-         las variables numéricas.
+st.write("""
+Como se detalló en el apartado *5. Modelado*, se desarrollaron tres modelos, cada uno con dos variantes: una incluyendo **PCA** para las variables numéricas y otra sin aplicar esta técnica.
 
-En este apartado vamos a detallar los **resultados individuales** de cada modelo y compararlos.
-    """)
+A continuación, se presentan los **resultados individuales** de cada modelo y su correspondiente comparación.
+""")
+
 
 
 st.divider()
