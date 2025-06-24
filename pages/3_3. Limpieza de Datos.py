@@ -209,6 +209,38 @@ plt.tight_layout()
 plt.show()'''
 st.code(codigo)
 
+
+with st.expander("Boxplots de variables numéricas"):
+    # Filtrar solo columnas numéricas
+    numeric_df = data.select_dtypes(include=np.number)
+
+    # Excluir columnas binarias
+    non_binary_columns = [col for col in numeric_df.columns if numeric_df[col].nunique() > 2]
+
+    # Número de gráficos
+    num_plots = len(non_binary_columns)
+    cols = 2
+    rows = (num_plots + 1) // cols
+
+    # Crear subplots
+    fig, axes = plt.subplots(rows, cols, figsize=(12, rows * 4))
+    axes = axes.flatten()
+
+    # Crear un boxplot para cada variable
+    for i, col in enumerate(non_binary_columns):
+        data.boxplot(column=col, ax=axes[i])
+        axes[i].set_title(f'Boxplot de {col}')
+
+    # Eliminar ejes vacíos
+    for j in range(i + 1, len(axes)):
+        fig.delaxes(axes[j])
+
+    # Mostrar en Streamlit
+    plt.tight_layout()
+    st.pyplot(fig)
+
+
+
 st.write("Luego creamos dos histogramas con las variables que nosotros creemos podríamos identificar los outliers a simple vista: `Income` y `Age`")
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
