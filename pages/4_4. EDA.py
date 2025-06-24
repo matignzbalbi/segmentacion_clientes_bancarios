@@ -376,7 +376,7 @@ for i, (bar, count) in enumerate(zip(bars1, counts)):
 
 # --- Gráfico de Ventas Promedio ---
 bars2 = ax2.bar(children, mean_sales, color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728'])
-ax2.set_title('Ventas Promedio por Número de Hijos', fontsize=14)
+ax2.set_title('Gastos Promedio por hijo', fontsize=14)
 ax2.set_xlabel('Número de Hijos', fontsize=12)
 ax2.set_ylabel('Spent ($)', fontsize=12)
 ax2.set_ylim(0, 1200)
