@@ -9,130 +9,133 @@ st.divider()
 st.markdown('''
         Debido a las carácteristicas de los clústers generados por KPrototypes proponemos los\
         siguientes perfiles para cada uno de ellos:
-        * `Cluster 1`: **Segmento de Bajos Ingresos**.
-        * `Cluster 2`: **Segmento de Ingresos Medios**.
-        * `Cluster 3`: **Segmento de Ingresos Medios Plus**.
-        * `Cluster 4`: **Segmento de Altos Ingresos**.
+        * `Cluster 1`: **SSegmento Bronce (Ingresos Bajos)**.
+        * `Cluster 2`: **Segmento Plata (Ingresos Medios)**.
+        * `Cluster 3`: **Segmento Oro (Ingresos Medios Altos)**.
+        * `Cluster 4`: **Segmento Platino (Ingresos Altos)**.
             ''')
 
 st.divider()
 st.header("Estrategias propuestas por tipo de cliente.")
+
+
 st.divider()
+####################################### SEG Bronce #######################################
+
 st.markdown("<h3><u>Segmento Bronce (Ingresos Bajos):</u></h3>", unsafe_allow_html=True)
-st.markdown('''
 
-Compras:
-- Compra pequeñas cantidades de productos, con patrones de compra similares en todas las categorías.
-- Ligera preferencia por productos de oro.
-- Adquiere productos con poca frecuencia, mostrando una baja respuesta a ofertas.
-- Visita frecuentemente la página web, pero no suele concretar compras.
-- Tiende a ignorar el catálogo y se enfoca en productos económicos.
+col1, col2, col3 = st.columns(3)
 
-Perfil:
-- Perfil variado: casados, solteros o en pareja.
-- Seguramente tienen uno o más hijos.
-- Incluye graduados, posgraduados y, de manera única, personas sin estudios superiores.
-- Mayoría entre 40 y 50 años.
-- Es el grupo con menores ingresos y menor gasto promedio, lo que se refleja en un volumen de compra reducido.
-- Frecuentemente presenta quejas.
-- Baja aceptación de campañas promocionales, especialmente las iniciales.
+with col1:
+    st.subheader("Insight principal:")
+    st.markdown("""
+    - Perfil estándar en ingresos y educación, mayormente entre 45 y 70 años, con comportamiento digital activo.
+    - Consultan la web con frecuencia y responden bien a promociones relevantes.
+    """)
 
-Notas:
-- Debido a sus limitaciones económicas, este segmento prioriza las ofertas con altos porcentajes de descuento, mostrando poco interés en promociones tipo 2x1 debido al bajo volumen de productos comprados.
-- Evalúa cuidadosamente el precio de sus compras, lo que podría explicar la baja conversión en la web si no encuentran productos económicos o descuentos atractivos.
+with col2:
+    st.subheader("Patrón de compral:")
+    st.markdown("""
+    - Buscan directamente ofertas, ignorando el catálogo.
+    - Compran más que los de bajo ingreso, especialmente vinos y productos de oro.
+    """)
 
-Estrategias:
-- Introducir líneas de productos económicos y ampliar la variedad de artículos con descuentos significativos.
-- Personalizar promociones basadas en el comportamiento de compra de este grupo.
-- Asegurar que estén informados sobre ofertas a través de campañas de email marketing y newsletters.''')
+with col3:
+    st.subheader("Estrategia clave:")
+    st.markdown("""
+    - Personalizar ofertas web visibles y atractivas.
+    - Ampliar la variedad de productos promocionados.
+    - Usar newsletters con descuentos dirigidos.
+    """)
+
+
 
 st.divider()
+####################################### SEG Plata #######################################
+
 st.markdown("<h3><u>Segmento Plata (Ingresos Medios):</u></h3>", unsafe_allow_html=True)
-st.markdown('''
 
-Compras:
-- Patrones de compra similares a los del segmento de bajos ingresos, pero con un volumen ligeramente superior.
-- Preferencia notable por vinos y productos de oro.
-- Comprador activo en la web, con alta frecuencia de visitas.
-- Tiende a ignorar el catálogo y busca directamente ofertas.
-- Responde positivamente a promociones, especialmente si son relevantes.
+col1, col2, col3 = st.columns(3)
 
-Perfil:
-- Perfil variado: casados, solteros o en pareja.
-- Seguramente tienen uno o más hijos.
-- Mayoría de graduados y posgraduados.
-- Mayoría entre 45 y 70 años.
-- Representa el estándar promedio en términos de ingresos, gasto y comportamiento de compra.
-- Baja aceptación de campañas promocionales en general.
+with col1:
+    st.subheader("Insight principal:")
+    st.markdown("""
+    - Grupo con menor poder adquisitivo, evaluador de precios y bajo volumen de compra.
+    - Alta navegación online pero baja conversión.
+    """)
 
-Notas:
-- Este segmento está atento a las ofertas publicadas en la web y suele aprovechar cualquier tipo de promoción, independientemente del producto o marca.
-- La falta de variedad en productos o la orientación de las ofertas hacia categorías específicas (como vinos o marcas particulares) podría limitar sus compras en otras categorías.
+with col2:
+    st.subheader("Patrón de compra:")
+    st.markdown("""
+    - Prefiere productos económicos.
+    - Sensible a descuentos grandes (no a 2x1).
+    - Ignora catálogo, prioriza el precio.
+    """)
 
-Estrategias:
-- Mejorar la visibilidad de las ofertas en la web y personalizarlas según los intereses del cliente.
-- Incrementar la variedad de productos y marcas disponibles.
-- Experimentar con descuentos en nuevas categorías para estimular el consumo, por ejemplo en packs de vinos mezclados con otro tipo de producto.
-- Fomentar la conversión de clientes regulares en compradores frecuentes mediante una experiencia de usuario optimizada, promociones atractivas y campañas de email marketing o newsletters.
-- Ofrecer beneficios como envíos gratuitos.
-''')
+with col3:
+    st.subheader("Estrategia clave:")
+    st.markdown("""
+    - Ofrecer productos económicos y promociones visibles.
+    - Enfocar campañas con precios bajos, no cantidad.
+    - Email marketing con productos destacados y descuento fuerte.
+    """)
+
+
 st.divider()
+####################################### SEG Oro #######################################
 st.markdown("<h3><u>Segmento Oro (Ingresos Medios Altos):</u></h3>", unsafe_allow_html=True)
-st.markdown('''
 
-Compras:
-- Fuerte preferencia por pescado, frutas y dulces.
-- Compra en grandes cantidades, igualando el promedio con los demas grupos, a pesar de ser un grupo reducido.
-- Consumo en otras categorías es superior al segmento de ingresos medios, pero es un grupo mas pequeño.
-- Comprador activo en la web y en la tienda, aunque con menos visitas frecuentes en la página.
-- Prefiere adquirir productos a través del catálogo en lugar de buscar ofertas.
-- Compra en grandes cantidades, priorizando la conveniencia sobre los descuentos.
+col1, col2, col3 = st.columns(3)
 
-Perfil:
-- Perfil variado: casados, solteros o en pareja.
-- Seguramente cuente con un hijo o ninguno.
-- Mayoría de graduados, con pocos posgraduados.
-- Mayoría entre 45 y 55 años.
-- Destaca por su alto volumen de compras por persona.
-- Baja aceptación de campañas promocionales.
+with col1:
+    st.subheader("Insight principal:")
+    st.markdown("""
+    - Grupo pequeño pero con alto volumen por persona.
+    - Prefiere conveniencia y calidad sobre descuentos.
+    """)
 
-Notas:
-- Este cliente parece tener claro lo que desea comprar y aprovecha ofertas relacionadas con la cantidad de productos más que con el precio.
-- Es probable que consuma productos de gama media-alta, con una rotación rápida debido a su corta vida útil (como frutas y pescado).
-- La conveniencia y la disponibilidad de productos específicos son clave para este segmento.
+with col2:
+    st.subheader("Patrón de compra:")
+    st.markdown("""
+    - Compra grandes cantidades de pescado, fruta y dulces.
+    - Usa más el catálogo que las ofertas.
+    - Activo en tienda y web.
+    """)
 
-Estrategias:
-- Enfocarse en optimizar el catálogo, asegurando que sea claro y accesible.
-- Ofrecer beneficios como envíos gratuitos o descuentos en el delivery para incentivar compras en grandes cantidades.
-- Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
-- Que los productos sean frescos puede ser un factor clave para que sigan consumiendo''')
+with col3:
+    st.subheader("Notas y Estrategias")
+    st.markdown("""
+    - Optimizar el catálogo digital.
+    - Envíos gratis y promociones por volumen.
+    - Fidelizar con programas tipo membresía o recompensas.
+    """)
+
+
 st.divider()
+####################################### SEG Platino #######################################
+
 st.markdown("<h3><u>Segmento Platino (Ingresos Altos):</u></h3>", unsafe_allow_html=True)
-st.markdown('''
+col1, col2, col3 = st.columns(3)
 
-Compras:
-- Preferencia por vinos y carne.
-- Compra cantidades moderadamente superiores a la media.
-- Comprador activo tanto la web como en la tienda, aunque con visitas menos frecuentes.
-- Prefiere el catálogo sobre las ofertas y realiza compras planificadas.
-- Adquiere cantidades moderadas de productos, sin depender de promociones.
+with col1:
+    st.subheader("Insight principal:")
+    st.markdown("""
+    - Comprador mayor (60-70 años), con comportamiento planificado y definido.
+    - Educación alta, sin hijos en su mayoría, más receptivo a campañas recientes.
+    """)
 
-Perfil:
-- Perfil variado: solteros, casados o en pareja.
-- Seguramente este grupo la mayoria no tengan hijos, aunque algunos están casados.
-- Mayoría de graduados y posgraduados.
-- Mayoría entre 60 y 70 años.
-- Grupo longevo que compra cantidades ligeramente superiores a lo estandar.
-- Mayor aceptación de campañas promocionales en comparación con otros segmentos.
+with col2:
+    st.subheader("Patrón de compra:")
+    st.markdown("""
+    - Prefiere vinos y carne.
+    - Compra cantidades moderadas, sin depender de descuentos.
+    - Usa catálogo, no busca ofertas.
+    """)
 
-Notas:
-- Este cliente parece tener preferencias definidas y realiza compras planificadas, mostrando poca atención a las ofertas.
-- El volumen moderado de compras puede estar relacionado con la conveniencia o la disponibilidad de productos específicos que consume con regularidad.
-- La aceptación de campañas recientes sugiere potencial para fidelizar a este grupo.
-
-Estrategias:
-- Crear promociones exclusivas y diferenciadas, enfocadas en productos de alta demanda para este segmento.
-- Incentivar la fidelidad mediante programas de membresía o beneficios post-compra.
-- Ofrecer envíos gratuitos o descuentos en el delivery para aumentar la conveniencia.
-''')
-st.divider()
+with col3:
+    st.subheader("Estrategia clave:")
+    st.markdown("""
+    - Crear promociones personalizadas para productos clave.
+    - Incentivar fidelidad con beneficios exclusivos (membresía, recompensas).
+    - Ofrecer delivery conveniente y gratuito.
+    """)

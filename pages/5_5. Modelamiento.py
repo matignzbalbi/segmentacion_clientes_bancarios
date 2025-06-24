@@ -78,6 +78,8 @@ En cuanto al método de enlace, el que mejor resultado nos proporcionó fue ``wa
     with c2:
         st.markdown(proceso)
 
+st.divider()
+
 st.write('''Dado que el objetivo central del proyecto prioriza la interpretabilidad de los resultados y la obtención de segmentos bien definidos para apoyar estrategias de negocio, se decidió no emplear los algoritmos DBSCAN ni GMM. 
 
 Por un lado, DBSCAN presenta limitaciones para trabajar eficazmente con datos mixtos (categóricos y numéricos), no brinda control explícito sobre la cantidad de clústeres a obtener, y funciona mejor cuando los datos presentan separaciones naturales y bien definidas por espacios vacíos en el conjunto, una condición que no aplica al presente análisis.

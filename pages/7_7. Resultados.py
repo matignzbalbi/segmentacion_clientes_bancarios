@@ -17,7 +17,7 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.decomposition import PCA
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 st.markdown("<h1 style='color:#00BFFF;'>Resultados.</h1>", unsafe_allow_html=True)
 st.divider()
 
