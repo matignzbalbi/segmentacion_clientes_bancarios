@@ -346,74 +346,15 @@ for j in range(data['clusters'].nunique(), len(axes)):
 plt.tight_layout()
 st.pyplot(plt.gcf())
 
-# 9. Income Promedio
-st.subheader("Promedio de Income por Cluster")
-Income_by_cluster = data.groupby('clusters')['Income'].mean().reset_index()
-plt.figure(figsize=(8, 6))
-sns.barplot(x='clusters', y='Income', data=Income_by_cluster, palette='Set2')
-plt.title('Income por Cluster')
-ax = plt.gca()
-for p in ax.patches:
-    ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf())
-
-# 10. NumWebVisitsMonth Promedio
-st.subheader("Promedio de NumWebVisitsMonth por Cluster")
-NumWebVisitsMonth_by_cluster = data.groupby('clusters')['NumWebVisitsMonth'].mean().reset_index()
-plt.figure(figsize=(8, 6))
-sns.barplot(x='clusters', y='NumWebVisitsMonth', data=NumWebVisitsMonth_by_cluster, palette='Set2')
-plt.title('NumWebVisitsMonth por Cluster')
-ax = plt.gca()
-for p in ax.patches:
-    ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf())
-
-# 11. Recency Promedio
-st.subheader("Recency Promedio por Cluster")
-Recency_by_cluster = data.groupby('clusters')['Recency'].mean().reset_index()
-plt.figure(figsize=(8, 6))
-sns.barplot(x='clusters', y='Recency', data=Recency_by_cluster, palette='Set2')
-plt.title('Recency por Cluster')
-ax = plt.gca()
-for p in ax.patches:
-    ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf())
-
-# 12. TotalAcceptedCmp Promedio
-st.subheader("Promedio de TotalAcceptedCmp por Cluster")
-TotalAcceptedCmp_by_cluster = data.groupby('clusters')['TotalAcceptedCmp'].mean().reset_index()
-plt.figure(figsize=(8, 6))
-sns.barplot(x='clusters', y='TotalAcceptedCmp', data=TotalAcceptedCmp_by_cluster, palette='Set2')
-plt.title('TotalAcceptedCmp por Cluster')
-ax = plt.gca()
-for p in ax.patches:
-    ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf())
-
-# 13. Age Promedio
-st.subheader("Promedio de Edad por Cluster")
-Age_by_cluster = data.groupby('clusters')['Age'].mean().reset_index()
-plt.figure(figsize=(8, 6))
-sns.barplot(x='clusters', y='Age', data=Age_by_cluster, palette='Set2')
-plt.title('Age por Cluster')
-ax = plt.gca()
-for p in ax.patches:
-    ax.annotate(f'{p.get_height():.3f}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-st.pyplot(plt.gcf())
-
 # 14. Promedios Numéricos por Cluster
 st.subheader("Promedios de las distintas variables numéricas por Cluster")
 numeric_cols = data.select_dtypes(include=np.number).columns.tolist()
 numeric_cols.remove('clusters')  # Elimina 'clusters' de la lista si está presente
 cluster_avg = data.groupby('clusters')[numeric_cols].mean()
 for col in numeric_cols:
+    st.subheader(f"Promedio de ({col}) por Cluster")
     plt.figure(figsize=(8, 6))
-    sns.barplot(x=cluster_avg.index, y=cluster_avg[col], palette='viridis')
+    sns.barplot(x=cluster_avg.index, y=cluster_avg[col], palette='Set2')
     plt.title(f'Promedio de {col} por Cluster')
     plt.xlabel('Cluster')
     plt.ylabel(f'Promedio de {col}')
