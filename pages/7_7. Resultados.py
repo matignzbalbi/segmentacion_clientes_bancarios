@@ -43,7 +43,7 @@ silueta_por_modelo = pd.DataFrame({
         0.306680
     ]
 })
-st.dataframe(silueta_por_modelo)
+st.dataframe(silueta_por_modelo.sort_values(by="Coef_Silueta", ascending=False))
 
 
 df_silueta = pd.DataFrame(silueta_por_modelo)
