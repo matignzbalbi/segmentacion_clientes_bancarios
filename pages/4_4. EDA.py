@@ -378,11 +378,11 @@ for i, (bar, count) in enumerate(zip(bars1, counts)):
 bars2 = ax2.bar(children, mean_sales, color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728'])
 ax2.set_title('Ventas Promedio por Número de Hijos', fontsize=14)
 ax2.set_xlabel('Número de Hijos', fontsize=12)
-ax2.set_ylabel('Ventas Promedio ($)', fontsize=12)
+ax2.set_ylabel('Spent ($)', fontsize=12)
 ax2.set_ylim(0, 1200)
 ax2.grid(axis='y', linestyle='--', alpha=0.7)
 
-# Añadir etiquetas de Mean Sales
+# Añadir etiquetas de Gasto promedio
 for i, (bar, sales) in enumerate(zip(bars2, mean_sales)):
     height = bar.get_height()
     ax2.text(bar.get_x() + bar.get_width()/2, height + 20, 
@@ -399,7 +399,7 @@ st.subheader("Datos Resumidos")
 data_table = {
     "Número de Hijos": children,
     "Ingreso Promedio": income,
-    "Ventas Promedio": mean_sales,
+    "Gasto Promedio": mean_sales,
     "Conteo (n)": counts
 }
 st.table(data_table)
