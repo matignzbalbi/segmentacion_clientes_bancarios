@@ -29,43 +29,12 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.subheader("Insight principal:")
     st.markdown("""
-    - Perfil estándar en ingresos y educación, mayormente entre 45 y 70 años, con comportamiento digital activo.
-    - Consultan la web con frecuencia y responden bien a promociones relevantes.
-    """)
-
-with col2:
-    st.subheader("Patrón de compral:")
-    st.markdown("""
-    - Buscan directamente ofertas, ignorando el catálogo.
-    - Compran más que los de bajo ingreso, especialmente vinos y productos de oro.
-    """)
-
-with col3:
-    st.subheader("Estrategia clave:")
-    st.markdown("""
-    - Personalizar ofertas web visibles y atractivas.
-    - Ampliar la variedad de productos promocionados.
-    - Usar newsletters con descuentos dirigidos.
-    """)
-
-
-
-st.divider()
-####################################### SEG Plata #######################################
-
-st.markdown("<h3><u>Segmento Plata (Ingresos Medios):</u></h3>", unsafe_allow_html=True)
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.subheader("Insight principal:")
-    st.markdown("""
     - Grupo con menor poder adquisitivo, evaluador de precios y bajo volumen de compra.
     - Alta navegación online pero baja conversión.
     """)
 
 with col2:
-    st.subheader("Patrón de compra:")
+    st.subheader("Patrón de compral:")
     st.markdown("""
     - Prefiere productos económicos.
     - Sensible a descuentos grandes (no a 2x1).
@@ -78,6 +47,44 @@ with col3:
     - Ofrecer productos económicos y promociones visibles.
     - Enfocar campañas con precios bajos, no cantidad.
     - Email marketing con productos destacados y descuento fuerte.
+
+    """)
+
+
+
+
+
+
+    
+    
+    
+st.divider()
+####################################### SEG Plata #######################################
+
+st.markdown("<h3><u>Segmento Plata (Ingresos Medios):</u></h3>", unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.subheader("Insight principal:")
+    st.markdown("""
+    - Perfil estándar en ingresos y educación, mayormente entre 45 y 70 años, con comportamiento digital activo.
+    - Consultan la web con frecuencia y responden bien a promociones relevantes.
+    """)
+
+with col2:
+    st.subheader("Patrón de compra:")
+    st.markdown("""
+    - Buscan directamente ofertas, ignorando el catálogo.
+    - Compran más que los de bajo ingreso, especialmente vinos y productos de oro.
+    """)
+
+with col3:
+    st.subheader("Estrategia clave:")
+    st.markdown("""
+    - Personalizar ofertas web visibles y atractivas.
+    - Ampliar la variedad de productos promocionados.
+    - Usar newsletters con descuentos dirigidos.
     """)
 
 
